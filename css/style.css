@@ -1444,6 +1444,225 @@ a {
 }
 
 
+/* 12. Conquistas ------------------------------------------------------------ */
+
+/* Números grandes, sem caixas: o número é o desenho */
+.numeros {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px var(--gap);
+  margin-bottom: clamp(56px, 8vw, 104px);
+  list-style: none;
+  padding: 0;
+}
+
+.numeros li {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  color: var(--tinta-2);
+}
+
+.numero {
+  margin-left: -0.04em;
+  color: var(--tinta);
+  font-size: clamp(3.75rem, 2rem + 5.4vw, 7rem);
+  font-weight: 600;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Linha do tempo: data | ponto | colocação | evento | projeto */
+.linha-tempo {
+  --col-data: 104px;
+  position: relative;
+  display: grid;
+  list-style: none;
+  padding: 0;
+}
+
+/* a linha vertical que liga os pontos: passa no centro da coluna do ponto
+   (largura da data + 16px de espaço + metade dos 33px da coluna) */
+.linha-tempo::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  bottom: 30px;
+  left: calc(var(--col-data) + 32px);
+  width: 1px;
+  background: var(--fio-forte);
+}
+
+.evento {
+  display: grid;
+  grid-template-columns: var(--col-data) 33px minmax(0, 11rem) minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: 16px;
+  padding-block: 20px;
+  border-top: 1px solid var(--fio);
+}
+
+.evento:last-child {
+  border-bottom: 1px solid var(--fio);
+}
+
+.evento__data {
+  padding-top: 5px;
+  color: var(--tinta-3);
+  font-family: var(--fonte-mono);
+  font-size: var(--fs-mono);
+}
+
+.evento__ponto {
+  justify-self: center;
+  width: 9px;
+  height: 9px;
+  margin-top: 9px;
+  border: 1.5px solid var(--tinta);
+  border-radius: 50%;
+  background: var(--fundo);
+  box-shadow: 0 0 0 4px var(--fundo);
+}
+
+/* 1º lugar: ponto cheio. Bolsa: ponto laranja. 3º lugar: só o contorno. */
+.evento--primeiro .evento__ponto {
+  background: var(--tinta);
+}
+
+.evento--bolsa .evento__ponto {
+  border-color: var(--sinal);
+  background: var(--sinal);
+}
+
+.evento__lugar {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+}
+
+.evento__texto {
+  display: grid;
+  gap: 2px;
+}
+
+.evento__nome {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.evento__nota {
+  color: var(--tinta-3);
+  font-size: var(--fs-pequeno);
+}
+
+/* O projeto vira um link para o cartão dele, mais acima */
+.evento__projeto {
+  position: relative;
+  align-self: start;
+  padding: 6px 12px;
+  border: 1px solid var(--fio-forte);
+  border-radius: 999px;
+  color: var(--tinta-2);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--t-medio) ease, border-color var(--t-medio) ease, transform var(--t-rapido) var(--ease-out);
+}
+
+/* área de toque maior que o desenho da pílula */
+.evento__projeto::after {
+  content: "";
+  position: absolute;
+  inset: -8px -4px;
+}
+
+.evento__projeto:active {
+  transform: scale(0.96);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .evento__projeto:hover {
+    border-color: var(--tinta-3);
+    color: var(--tinta);
+  }
+}
+
+@media (max-width: 899px) {
+  .evento {
+    grid-template-columns: var(--col-data) 33px minmax(0, 1fr) auto;
+    row-gap: 2px;
+  }
+
+  .evento__lugar {
+    grid-column: 3;
+  }
+
+  .evento__texto {
+    grid-column: 3;
+  }
+
+  .evento__projeto {
+    grid-column: 4;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 599px) {
+  .numeros {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .numeros li {
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  /* No celular: data em cima, ponto e linha à esquerda */
+  .linha-tempo {
+    --col-data: 0px;
+  }
+
+  .linha-tempo::before {
+    left: 4px;
+  }
+
+  .evento {
+    grid-template-columns: 9px minmax(0, 1fr);
+    column-gap: 20px;
+    row-gap: 4px;
+  }
+
+  .evento__data {
+    grid-column: 2;
+    grid-row: 1;
+    padding-top: 0;
+  }
+
+  .evento__ponto {
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 5px;
+  }
+
+  .evento__lugar,
+  .evento__texto {
+    grid-column: 2;
+  }
+
+  .evento__projeto {
+    grid-column: 2;
+    grid-row: auto;
+    justify-self: start;
+    margin-top: 8px;
+  }
+}
+
+
 /* Movimento ---------------------------------------------------------------
    Só acontece uma vez, ao carregar a página, e só se a pessoa não pediu
    "reduzir movimento" no sistema. Nenhuma seção aparece ao rolar. */

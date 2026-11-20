@@ -117,6 +117,21 @@ const textosEn = {
   'sonora.resumo': 'A mobile prototype of a music streaming app, designed in Figma for the User Interface course at IFTO.',
   'sonora.tag': 'Mobile prototype',
   'sonora.figma': 'View in Figma',
+
+  'data.dez25': 'Dec 2025',
+  'conquistas.titulo': 'Awards',
+  'conquistas.nota': 'Nov 2025 — Nov 2026',
+  'numeros.premios': 'awards',
+  'numeros.bolsa': 'CNPq research scholarship',
+  'numeros.sistemas': 'live systems',
+  'conquistas.jice': 'Health Sciences · 17th JICE (IFTO)',
+  'conquistas.ideathon': 'V Ideathon Maker · 17th JICE (IFTO)',
+  'conquistas.bolsa': 'CNPq scholarship',
+  'conquistas.bolsaNome': 'Junior research scholarship (Iniciação Científica Júnior)',
+  'conquistas.bolsaNota': 'Dec 2025 to Dec 2026, on the LembreMED project.',
+  'conquistas.viva': 'Biological and Health Sciences · Viva Ciência',
+  'conquistas.vivaNota': 'Led to the CNPq scholarship.',
+  'conquistas.campus': 'Ideathon · Campus Party Goiás',
 };
 
 const textosPt = {};
