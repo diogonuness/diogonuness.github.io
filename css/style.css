@@ -1,0 +1,1152 @@
+/* ==========================================================================
+   Portfólio de Diogo Araujo Nunes
+   Uma folha de estilos só, dividida em blocos numerados.
+   Para achar uma parte, procure pelo número (ex.: "08.") ou pelo nome.
+
+   01. Fontes                07. Navegação (topo e menu do celular)
+   02. Tokens (cores etc.)   08. Hero
+   03. Base                  09. Régua da trajetória
+   04. Layout                10. Cabeçalho das seções
+   05. Utilitários           11+. Seções (projetos, conquistas...)
+   06. Componentes           Fim. Movimento reduzido
+   ========================================================================== */
+
+
+/* 01. Fontes ---------------------------------------------------------------
+   Geist e Geist Mono são de código aberto (licença OFL, em assets/fonts).
+   São fontes "variáveis": um arquivo só tem todos os pesos, de 100 a 900.
+   font-display: swap mostra o texto na hora com uma fonte de reserva. */
+@font-face {
+  font-family: "Geist";
+  src: url("../assets/fonts/geist-latin-wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../assets/fonts/geist-mono-latin-wght.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fontes de reserva "ajustadas": Arial e Courier com as medidas da Geist.
+   Enquanto a Geist carrega, o texto já ocupa o mesmo espaço, então nada pula
+   de lugar quando ela chega (isso melhora o CLS do Lighthouse). */
+@font-face {
+  font-family: "Geist Reserva";
+  src: local("Arial"), local("ArialMT");
+  size-adjust: 102.95%;
+  ascent-override: 97.62%;
+  descent-override: 28.65%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Geist Mono Reserva";
+  src: local("Courier New"), local("CourierNewPSMT");
+  size-adjust: 100%;
+  ascent-override: 100.52%;
+  descent-override: 29.5%;
+  line-gap-override: 0%;
+}
+
+
+/* 02. Tokens ---------------------------------------------------------------
+   Todas as cores, tamanhos e tempos ficam aqui. Mudou aqui, muda no site todo.
+   Tema claro = papel quente. Tema escuro = grafite. Uma cor de destaque: laranja. */
+:root {
+  /* Cores do tema claro */
+  --fundo: #f4f1ea;
+  --superficie: #faf8f3;
+  --superficie-2: #ece8df;
+  --tinta: #1c1b18;        /* texto principal */
+  --tinta-2: #55514a;      /* texto secundário */
+  --tinta-3: #6e695f;      /* rótulos e datas (ainda passa no contraste AA) */
+  --fio: #e2dcd0;          /* linhas finas */
+  --fio-forte: #c9c1b3;
+  --destaque: #b93d0a;     /* laranja para TEXTO: contraste 4,98:1 sobre o fundo */
+  --sinal: #ee5420;        /* laranja vivo só para pontos e marcas gráficas */
+  --sombra: 0 1px 2px rgb(28 27 24 / 0.05), 0 12px 32px -16px rgb(28 27 24 / 0.18);
+  color-scheme: light;
+
+  /* Tipografia */
+  --fonte: "Geist", "Geist Reserva", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fonte-mono: "Geist Mono", "Geist Mono Reserva", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  /* clamp(mínimo, preferido, máximo): o tamanho acompanha a largura da tela */
+  --fs-display: clamp(2.75rem, 1.2rem + 6.4vw, 7rem);
+  --fs-h2: clamp(2rem, 1.3rem + 2.6vw, 3.5rem);
+  --fs-h3: clamp(1.5rem, 1.2rem + 1.1vw, 2.125rem);
+  --fs-lead: clamp(1.125rem, 1rem + 0.45vw, 1.3125rem);
+  --fs-corpo: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
+  --fs-pequeno: 0.875rem;
+  --fs-mono: 0.8125rem;
+
+  /* Layout */
+  --largura: 1200px;                         /* largura máxima do conteúdo */
+  --margem: max(clamp(20px, 5vw, 64px), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+  --gap: clamp(16px, 2vw, 24px);             /* espaço entre colunas */
+  --altura-topo: 64px;
+  --raio: 16px;
+  --raio-p: 10px;
+
+  /* Movimento: curvas fortes de "ease-out" deixam a interface mais responsiva */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --t-rapido: 160ms;
+  --t-medio: 240ms;
+}
+
+/* Tema escuro automático (segue o sistema), a não ser que a pessoa tenha escolhido o claro */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fundo: #151412;
+    --superficie: #1c1b18;
+    --superficie-2: #242220;
+    --tinta: #eeebe4;
+    --tinta-2: #aba598;
+    --tinta-3: #8e887c;
+    --fio: #2b2925;
+    --fio-forte: #3d3a34;
+    --destaque: #ff8a50;
+    --sinal: #ff6b2c;
+    --sombra: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px -16px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+/* Tema escuro escolhido no botão (o JS coloca data-theme="dark" no <html>) */
+:root[data-theme="dark"] {
+  --fundo: #151412;
+  --superficie: #1c1b18;
+  --superficie-2: #242220;
+  --tinta: #eeebe4;
+  --tinta-2: #aba598;
+  --tinta-3: #8e887c;
+  --fio: #2b2925;
+  --fio-forte: #3d3a34;
+  --destaque: #ff8a50;
+  --sinal: #ff6b2c;
+  --sombra: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px -16px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+
+/* 03. Base ----------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent; /* tira o "flash" cinza ao tocar no celular */
+  scroll-behavior: smooth;
+  /* ao clicar num link de âncora, a seção não fica escondida atrás do topo fixo */
+  scroll-padding-top: calc(var(--altura-topo) + 24px);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: var(--fonte);
+  font-size: var(--fs-corpo);
+  line-height: 1.6;
+  letter-spacing: -0.003em;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--sinal) 30%, transparent);
+}
+
+/* Foco visível só quando se navega pelo teclado */
+:focus-visible {
+  outline: 2px solid var(--destaque);
+  outline-offset: 3px;
+}
+
+
+/* 04. Layout ---------------------------------------------------------------
+   .wrap centraliza o conteúdo com margens laterais iguais.
+   .grade é o grid de 12 colunas usado nas seções. */
+.wrap {
+  width: min(100% - 2 * var(--margem), var(--largura));
+  margin-inline: auto;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+}
+
+
+/* 05. Utilitários ---------------------------------------------------------- */
+
+/* Esconde da tela, mas leitores de tela continuam lendo */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Link "Pular para o conteúdo": aparece só quando recebe foco pelo Tab */
+.pular {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--tinta);
+  color: var(--fundo);
+  font-size: var(--fs-pequeno);
+  font-weight: 500;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform var(--t-medio) var(--ease-out);
+}
+
+.pular:focus {
+  transform: none;
+}
+
+.rotulo {
+  font-family: var(--fonte-mono);
+  font-size: var(--fs-mono);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--tinta-3);
+}
+
+
+/* 06. Componentes ---------------------------------------------------------- */
+
+/* Botões: um principal (tinta) e um secundário (contorno) */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 22px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--fonte);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition:
+    background-color var(--t-medio) ease,
+    border-color var(--t-medio) ease,
+    color var(--t-medio) ease,
+    transform var(--t-rapido) var(--ease-out);
+}
+
+.botao svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  transition: transform var(--t-medio) var(--ease-out);
+}
+
+/* Ao clicar, o botão "afunda" um pouco: confirma que o clique foi ouvido */
+.botao:active {
+  transform: scale(0.97);
+}
+
+.botao--primario {
+  background: var(--tinta);
+  color: var(--fundo);
+}
+
+.botao--secundario {
+  border-color: var(--fio-forte);
+  background: transparent;
+  color: var(--tinta);
+}
+
+/* Efeitos de hover só onde existe mouse (no celular o hover "gruda" depois do toque) */
+@media (hover: hover) and (pointer: fine) {
+  .botao--primario:hover {
+    background: color-mix(in oklab, var(--tinta) 84%, var(--fundo));
+  }
+
+  .botao--secundario:hover {
+    border-color: var(--tinta-3);
+    background: var(--superficie);
+  }
+
+  .botao:hover .icone-baixo {
+    transform: translateY(2px);
+  }
+
+  .botao:hover .icone-externo {
+    transform: translate(2px, -2px);
+  }
+}
+
+/* Link de texto com sublinhado que se desenha da esquerda para a direita */
+.link {
+  color: var(--tinta);
+  text-decoration: none;
+  background-image:
+    linear-gradient(var(--destaque), var(--destaque)),
+    linear-gradient(var(--fio-forte), var(--fio-forte));
+  background-size: 0% 1px, 100% 1px;
+  background-position: 0 100%, 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-size 450ms var(--ease-out), color var(--t-medio) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    background-size: 100% 1px, 100% 1px;
+  }
+}
+
+/* Tags de tecnologia em "pílula" monoespaçada */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.tags li {
+  padding: 7px 11px;
+  border: 1px solid var(--fio);
+  border-radius: 999px;
+  background: var(--superficie);
+  color: var(--tinta-2);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* Ponto de status (laranja). O ::after é o anel que pulsa algumas vezes */
+.ponto {
+  position: relative;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sinal);
+}
+
+.ponto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--sinal);
+  opacity: 0;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+
+/* 07. Navegação ------------------------------------------------------------ */
+.topo {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--t-medio) ease,
+    border-color var(--t-medio) ease;
+}
+
+/* Depois que a página rola, o topo ganha um fundo translúcido e uma linha fina */
+.topo.rolou {
+  border-bottom-color: var(--fio);
+  background: color-mix(in srgb, var(--fundo) 82%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  backdrop-filter: saturate(1.4) blur(14px);
+}
+
+.topo__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: var(--altura-topo);
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--tinta);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.marca svg {
+  width: 30px;
+  height: 30px;
+  flex: none;
+}
+
+.marca__fundo { fill: var(--tinta); }
+.marca__letras { fill: var(--fundo); }
+.marca__ponto { fill: var(--sinal); }
+
+.menu ul {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  padding: 0;
+}
+
+.menu a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  color: var(--tinta-2);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: color var(--t-medio) ease;
+}
+
+/* Sublinhado que se desenha no hover e marca a seção atual */
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 9px;
+  height: 1px;
+  background: var(--destaque);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 350ms var(--ease-out);
+}
+
+.menu a[aria-current="true"] {
+  color: var(--tinta);
+}
+
+.menu a[aria-current="true"]::after {
+  transform: scaleX(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .menu a:hover {
+    color: var(--tinta);
+  }
+
+  .menu a:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.topo__acoes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Seletor PT/EN: o botão tem 44px de área de toque; a "pílula" visível é menor */
+.idioma {
+  display: flex;
+  align-items: center;
+}
+
+.idioma button,
+.botao-icone {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.idioma button {
+  color: var(--tinta-3);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: color var(--t-medio) ease;
+}
+
+.idioma button::before {
+  content: "";
+  position: absolute;
+  inset: 8px 4px;
+  z-index: -1;
+  border-radius: 999px;
+  background: var(--tinta);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity var(--t-rapido) ease, transform var(--t-medio) var(--ease-out);
+}
+
+.idioma button[aria-pressed="true"] {
+  color: var(--fundo);
+}
+
+.idioma button[aria-pressed="true"]::before {
+  opacity: 1;
+  transform: none;
+}
+
+.botao-icone {
+  border-radius: 999px;
+  color: var(--tinta-2);
+  transition: color var(--t-medio) ease, background-color var(--t-medio) ease, transform var(--t-rapido) var(--ease-out);
+}
+
+.botao-icone svg {
+  width: 18px;
+  height: 18px;
+}
+
+.botao-icone:active {
+  transform: scale(0.94);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .idioma button:hover:not([aria-pressed="true"]),
+  .botao-icone:hover {
+    color: var(--tinta);
+  }
+
+  .botao-icone:hover {
+    background: var(--superficie);
+  }
+}
+
+/* Ícones de sol/lua: só um aparece por vez, com uma troca suave */
+.tema svg {
+  grid-area: 1 / 1;
+  transition: opacity var(--t-medio) ease, transform 400ms var(--ease-out);
+}
+
+.tema .icone-sol { opacity: 0; transform: rotate(-60deg) scale(0.8); }
+.tema[aria-pressed="true"] .icone-sol { opacity: 1; transform: none; }
+.tema[aria-pressed="true"] .icone-lua { opacity: 0; transform: rotate(60deg) scale(0.8); }
+
+/* Botão "Menu" e menu em tela cheia: só no celular */
+.menu-btn {
+  display: none;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--fio-forte);
+  border-radius: 999px;
+  background: none;
+  color: var(--tinta);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform var(--t-rapido) var(--ease-out);
+}
+
+.menu-btn:active {
+  transform: scale(0.96);
+}
+
+.menu-btn__linhas {
+  position: relative;
+  width: 14px;
+  height: 8px;
+}
+
+.menu-btn__linhas::before,
+.menu-btn__linhas::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+  transition: transform var(--t-medio) var(--ease-out);
+}
+
+.menu-btn__linhas::before { top: 0; }
+.menu-btn__linhas::after { bottom: 0; }
+.menu-btn[aria-expanded="true"] .menu-btn__linhas::before { transform: translateY(3.25px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] .menu-btn__linhas::after { transform: translateY(-3.25px) rotate(-45deg); }
+
+.gaveta {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding:
+    calc(var(--altura-topo) + env(safe-area-inset-top, 0px) + 24px)
+    var(--margem)
+    calc(28px + env(safe-area-inset-bottom, 0px));
+  background: var(--fundo);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  transition: opacity 180ms var(--ease-out);
+}
+
+.gaveta[hidden] {
+  display: none;
+}
+
+.gaveta.aberta {
+  opacity: 1;
+}
+
+.gaveta ul {
+  list-style: none;
+  padding: 0;
+}
+
+.gaveta li {
+  border-bottom: 1px solid var(--fio);
+  opacity: 0;
+  translate: 0 12px;
+  transition: opacity 100ms ease, translate 100ms ease;
+}
+
+.gaveta.aberta li {
+  opacity: 1;
+  translate: 0 0;
+  transition: opacity 350ms var(--ease-out), translate 500ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 50ms + 40ms);
+}
+
+.gaveta a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  color: var(--tinta);
+  font-size: clamp(2.25rem, 11vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  text-decoration: none;
+}
+
+.gaveta__rodape {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Com o menu aberto, o topo fica sólido por cima dele */
+.menu-aberto .topo {
+  border-bottom-color: var(--fio);
+  background: var(--fundo);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.menu-aberto body {
+  overflow: hidden;
+}
+
+@media (max-width: 759px) {
+  .menu,
+  .marca__nome {
+    display: none;
+  }
+
+  .menu-btn {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 4px;
+  }
+}
+
+
+/* 08. Hero ----------------------------------------------------------------
+   Ocupa a primeira tela inteira (100svh = altura da tela do celular sem
+   contar a barra do navegador). A régua fica presa no rodapé do hero. */
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding-top: calc(var(--altura-topo) + env(safe-area-inset-top, 0px) + clamp(32px, 6vh, 72px));
+  padding-bottom: clamp(28px, 5vh, 56px);
+}
+
+/* margin-block: auto centraliza o texto no espaço que sobra acima da régua */
+.hero__conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-block: auto;
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 20px;
+  margin-bottom: clamp(20px, 3.4vh, 36px);
+}
+
+.hero__nome {
+  /* margem negativa: alinha opticamente a haste do "D" com a coluna */
+  margin: 0 0 clamp(16px, 2.6vh, 26px) -0.055em;
+  font-size: var(--fs-display);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.hero__cargo {
+  margin-bottom: 10px;
+  font-size: var(--fs-lead);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+.hero__valor {
+  max-width: 36rem;
+  color: var(--tinta-2);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.hero__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: clamp(28px, 4.6vh, 44px);
+}
+
+.sociais {
+  display: flex;
+  gap: 2px;
+  margin-left: 6px;
+  list-style: none;
+  padding: 0;
+}
+
+.sociais a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  color: var(--tinta-2);
+  touch-action: manipulation;
+  transition: color var(--t-medio) ease, background-color var(--t-medio) ease, transform var(--t-rapido) var(--ease-out);
+}
+
+.sociais svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sociais a:active {
+  transform: scale(0.94);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sociais a:hover {
+    background: var(--superficie);
+    color: var(--tinta);
+  }
+}
+
+@media (max-width: 599px) {
+  .hero__acoes .botao {
+    flex: 1 1 100%;
+  }
+
+  .sociais {
+    margin-left: -10px;
+  }
+}
+
+
+/* 09. Régua da trajetória -------------------------------------------------
+   Uma escala de meses de jan/2024 (0) a jan/2027 (36).
+   Cada marco recebe --m (o número do mês) no HTML, e a posição é
+   calculada assim: left = m / 36 × 100% da largura da régua.
+   --hoje é o mês atual (o JS calcula): até ali a linha é sólida;
+   depois, tracejada em laranja até o ponto final "disponível". */
+.regua {
+  --rotulos: 84px;   /* altura da área dos rótulos acima da linha */
+  --escala: 14px;    /* altura dos tracinhos dos meses */
+  padding-top: clamp(32px, 6vh, 72px);
+}
+
+/* O ano do primeiro marco já aparece na escala: some da tela, fica para leitores de tela */
+.marco--inicio time {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.regua__marcos {
+  position: relative;
+  height: var(--rotulos);
+  list-style: none;
+  padding: 0;
+}
+
+.marco {
+  position: absolute;
+  bottom: 0;
+  left: calc(var(--m) / 36 * 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 0 0 14px 12px;
+  border-left: 1px solid var(--fio-forte);
+  font-size: var(--fs-pequeno);
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.marco time {
+  color: var(--tinta-3);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.marco b {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* O ponto do marco, em cima da linha */
+.marco::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  bottom: -4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--tinta);
+  box-shadow: 0 0 0 3px var(--fundo);
+}
+
+/* Marco com o texto à esquerda da haste: cada rótulo "aponta" para o seu mês
+   e assim os grupos de prêmios não se encostam em telas menores */
+.marco--dir {
+  align-items: flex-end;
+  padding: 0 12px 14px 0;
+  border-left: 0;
+  border-right: 1px solid var(--fio-forte);
+  text-align: right;
+  transform: translateX(-100%);
+}
+
+.marco--dir::after {
+  left: auto;
+  right: -4px;
+}
+
+/* O ponto final: "disponível para estágio", abaixo da linha, à direita */
+.marco--fim {
+  top: calc(100% + var(--escala) + 6px);
+  bottom: auto;
+  left: auto;
+  right: 0;
+  align-items: flex-end;
+  padding: 0;
+  border: 0;
+  color: var(--destaque);
+  font-weight: 500;
+  text-align: right;
+}
+
+.marco--fim::after {
+  display: none;
+}
+
+.regua__linha {
+  position: relative;
+  height: var(--escala);
+}
+
+.regua__passado {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--hoje, 34) / 36 * 100%);
+  height: 1px;
+  background: var(--tinta);
+}
+
+.regua__futuro {
+  position: absolute;
+  top: 0;
+  left: calc(var(--hoje, 34) / 36 * 100%);
+  right: 0;
+  border-top: 1px dashed var(--sinal);
+}
+
+.regua__ticks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  color: var(--fio-forte);
+}
+
+.regua__alvo {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--sinal);
+  box-shadow: 0 0 0 4px var(--fundo);
+}
+
+.regua__alvo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--sinal);
+  opacity: 0;
+}
+
+.regua__anos {
+  position: relative;
+  height: 40px;   /* reserva espaço para as duas linhas do "disponível" */
+  margin-top: 8px;
+  color: var(--tinta-3);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.regua__anos span {
+  position: absolute;
+  top: 0;
+  left: calc(var(--m) / 36 * 100%);
+}
+
+.regua__anos .ano-fim {
+  display: none;
+  transform: translateX(-100%);
+}
+
+/* Celular: só os pontos, os anos e o "disponível".
+   Os nomes dos prêmios continuam no HTML para leitores de tela
+   e aparecem por extenso na seção Conquistas. */
+@media (max-width: 759px) {
+  .regua {
+    --rotulos: 40px;
+  }
+
+  .regua__anos {
+    height: 20px;
+  }
+
+  .marco {
+    padding: 0;
+    border: 0;
+  }
+
+  .marco--dir {
+    transform: none;
+  }
+
+  .marco:not(.marco--fim) > * {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .marco--fim {
+    top: auto;
+    bottom: 14px;
+    flex-direction: row-reverse;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .regua__anos .ano-fim {
+    display: block;
+  }
+}
+
+
+/* Movimento ---------------------------------------------------------------
+   Só acontece uma vez, ao carregar a página, e só se a pessoa não pediu
+   "reduzir movimento" no sistema. Nenhuma seção aparece ao rolar. */
+
+/* Durante a troca de tema, nada anima: todas as cores mudam juntas */
+.sem-transicao *,
+.sem-transicao *::before,
+.sem-transicao *::after {
+  transition: none !important;
+}
+@keyframes surgir {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+}
+
+@keyframes desenhar {
+  from {
+    clip-path: inset(-12px 100% -12px -12px);
+  }
+  to {
+    clip-path: inset(-12px -12px -12px -12px);
+  }
+}
+
+@keyframes pulso {
+  from {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(3.2);
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Entrada do hero: cada item sobe 14px e aparece, um depois do outro (--i) */
+  [data-entrada] {
+    animation: surgir 900ms var(--ease-out) backwards;
+    animation-delay: calc(var(--i, 0) * 70ms + 60ms);
+  }
+
+  /* A régua se desenha da esquerda para a direita... */
+  .regua__linha {
+    animation: desenhar 1500ms var(--ease-in-out) 350ms backwards;
+  }
+
+  /* ...e cada marco aparece quando a linha passa por ele */
+  .marco,
+  .regua__anos span {
+    animation: surgir 700ms var(--ease-out) backwards;
+    animation-delay: calc(450ms + var(--m) / 36 * 1250ms);
+  }
+
+  /* O ponto "disponível" pulsa 3 vezes e para (menos de 5 segundos) */
+  .hero .ponto::after {
+    animation: pulso 1500ms var(--ease-out) 700ms 3;
+  }
+
+  .regua__alvo::after {
+    animation: pulso 1500ms var(--ease-out) 1750ms 3;
+  }
+}
+
+/* Com "reduzir movimento": nada se desloca, só um fade curto */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-entrada],
+  .marco,
+  .regua__anos span {
+    animation: aparecer 300ms ease backwards;
+  }
+}
