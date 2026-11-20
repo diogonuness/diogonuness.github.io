@@ -71,16 +71,52 @@ const textosEn = {
   'hero.verProjetos': 'See projects',
   'hero.baixarCv': 'Download résumé',
 
+  'data.nov25': 'Nov 2025',
+  'data.nov26': 'Nov 2026',
+  'data.jan27': 'Jan 2027',
+
   'regua.rotulo': 'Timeline, from 2024 to January 2027',
   'regua.inicio': 'Started the IT program at IFTO',
-  'regua.nov25': 'Nov 2025',
   'regua.viva': '<b>1st</b> Viva Ciência',
   'regua.campus': '<b>3rd</b> Campus Party Goiás',
-  'regua.nov26': 'Nov 2026',
   'regua.jice': '<b>1st</b> JICE · Health Sciences',
   'regua.ideathon': '<b>3rd</b> V Ideathon Maker',
-  'regua.jan27': 'Jan 2027',
   'regua.fim': 'Available for internships',
+
+  'a11y.novaAba': '(opens in a new tab)',
+  'a11y.tecnologias': 'Technologies',
+  'a11y.ferramentas': 'Tools',
+
+  'projetos.titulo': 'Projects',
+  'projetos.nota': '2 live systems · 1 interface prototype',
+
+  'lembremed.rotulo': 'Main project · live',
+  'lembremed.resumo': 'A web system that helps older adults and their caregivers organize medication and remember every dose.',
+  'lembremed.verNoAr': 'See it live',
+  'caso.problema': 'Problem',
+  'caso.solucao': 'Solution',
+  'caso.papel': 'My role',
+  'caso.resultado': 'Results',
+  'lembremed.problema': 'People who take several medications a day need to remember every dose on time, and their caregivers need to know it was taken.',
+  'lembremed.solucao': 'The caregiver registers medications and schedules and follows each dose. The older adult uses a simple, accessible screen. There are three access levels: older adult, caregiver and administrator.',
+  'lembremed.papel': 'I build the system with João Gabryel, advised by Prof. Iury Gomes de Oliveira (IFTO / LabSIS). I hold a CNPq junior research scholarship on the project.',
+  'premio.primeiro': '1st place',
+  'premio.terceiro': '3rd place',
+  'lembremed.premio1': 'Health Sciences, 17th JICE (IFTO)',
+  'lembremed.premio2': 'Biological and Health Sciences, Viva Ciência',
+  'lembremed.premio3': 'Campus Party Goiás Ideathon',
+
+  'norma.rotulo': 'Prototype · live demo',
+  'norma.resumo': 'An assistant that answers questions about IFTO’s regulations, by text or voice, citing the exact article and the official PDF.',
+  'norma.detalhe': 'Search currently uses keywords and synonyms; the next step is AI with RAG. Built by team Fonte Certa, advised by Prof. Iury.',
+  'norma.premio': 'V Ideathon Maker, 17th JICE (IFTO)',
+  'norma.demo': 'Live demo',
+  'norma.codigo': 'Code on GitHub',
+
+  'sonora.rotulo': 'Interface design · Figma',
+  'sonora.resumo': 'A mobile prototype of a music streaming app, designed in Figma for the User Interface course at IFTO.',
+  'sonora.tag': 'Mobile prototype',
+  'sonora.figma': 'View in Figma',
 };
 
 const textosPt = {};

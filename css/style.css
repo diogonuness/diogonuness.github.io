@@ -1066,6 +1066,384 @@ a {
 }
 
 
+/* 10. Cabeçalho das seções -------------------------------------------------
+   Todas as seções começam igual: um fio fino, o título e uma nota em mono. */
+.secao {
+  padding-top: clamp(96px, 13vw, 184px);
+}
+
+.secao__topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-bottom: clamp(36px, 5vw, 64px);
+  padding-top: 18px;
+  border-top: 1px solid var(--fio);
+}
+
+.secao__titulo {
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+
+/* 11. Projetos -------------------------------------------------------------- */
+
+/* LembreMED: cabeçalho, palco com a moldura e o estudo de caso */
+.destaque {
+  display: grid;
+  gap: clamp(28px, 4vw, 48px);
+}
+
+.destaque__cabeca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 32px;
+}
+
+.destaque__intro {
+  display: grid;
+  gap: 14px;
+  max-width: 40rem;
+}
+
+.destaque__intro .tags {
+  margin-top: 6px;
+}
+
+.destaque__nome {
+  font-size: clamp(2.125rem, 1.4rem + 2.2vw, 3rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.destaque__resumo {
+  color: var(--tinta-2);
+  font-size: var(--fs-lead);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+/* Palco: o fundo onde a moldura fica "apoiada". A moldura é cortada embaixo
+   pela margem negativa, como uma janela que sobe da borda. */
+.palco {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: clamp(12px, 3vw, 28px);
+  overflow: hidden;
+  padding: clamp(20px, 5.5vw, 72px) clamp(20px, 7vw, 96px) 0;
+  border-radius: var(--raio);
+  background: var(--superficie-2);
+  text-decoration: none;
+  transition:
+    transform var(--t-medio) var(--ease-out),
+    box-shadow var(--t-medio) ease;
+}
+
+.palco > .moldura {
+  flex: 1;
+  margin-bottom: -9%;
+}
+
+/* Nos cartões, o palco tem proporção fixa: os dois ficam da mesma altura
+   e o que passar da borda de baixo é cortado (overflow: hidden) */
+.palco--cartao {
+  align-items: flex-start;
+  aspect-ratio: 16 / 9.5;
+  padding: clamp(20px, 4vw, 44px) clamp(20px, 4vw, 48px) 0;
+}
+
+/* Moldura de navegador */
+.moldura {
+  display: block;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  background: var(--superficie);
+  box-shadow: 0 0 0 1px var(--fio-forte), var(--sombra);
+}
+
+.moldura__barra {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 34px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--fio);
+}
+
+.moldura__pontos {
+  display: flex;
+  flex: none;
+  gap: 6px;
+}
+
+.moldura__pontos i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--fio-forte);
+}
+
+.moldura__url {
+  overflow: hidden;
+  margin-inline: auto;
+  padding: 3px 12px;
+  border-radius: 6px;
+  background: var(--fundo);
+  color: var(--tinta-3);
+  font-family: var(--fonte-mono);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* compensa a largura dos três pontos para o endereço ficar no centro de verdade */
+  transform: translateX(-21px);
+}
+
+.moldura__tela {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--superficie);
+}
+
+/* Print (img) ou ilustração (svg) dentro da moldura: preenche e dá zoom no hover */
+.moldura__tela > img,
+.moldura__tela > svg,
+.celular__tela > img,
+.celular__tela > svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 700ms var(--ease-out);
+}
+
+/* Moldura de celular (Sonora) */
+.celular {
+  position: relative;
+  flex: 0 1 200px;
+  aspect-ratio: 9 / 19.5;
+  padding: 6px;
+  border-radius: 30px;
+  background: var(--superficie);
+  box-shadow: 0 0 0 1px var(--fio-forte), var(--sombra);
+}
+
+/* a "ilha" no topo da tela */
+.celular::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  z-index: 1;
+  width: 30%;
+  height: 13px;
+  border-radius: 999px;
+  background: #121110; /* quase preto nos dois temas, como num aparelho de verdade */
+  transform: translateX(-50%);
+}
+
+.celular__tela {
+  display: block;
+  overflow: hidden;
+  height: 100%;
+  border-radius: 24px;
+  background: var(--fundo);
+}
+
+/* Cores das ilustrações provisórias: seguem o tema (claro ou escuro) */
+.il-fundo { fill: var(--superficie); }
+.il-cartao { fill: var(--fundo); stroke: var(--fio); stroke-width: 1.5; }
+.il-forte { fill: var(--tinta-2); }
+.il-medio { fill: var(--fio-forte); }
+.il-fraco { fill: var(--fio); }
+.il-realce { fill: var(--superficie-2); }
+.il-sinal { fill: var(--sinal); }
+.il-marca { fill: color-mix(in srgb, var(--sinal) 16%, transparent); }
+.il-contorno { fill: none; stroke: var(--fio-forte); stroke-width: 2; }
+.il-contorno-sinal { fill: none; stroke: var(--sinal); stroke-width: 2; }
+.il-linha { fill: none; stroke: var(--fundo); stroke-opacity: 0.35; stroke-width: 1; }
+
+/* Hover: o palco sobe 2px e a imagem dá um zoom leve dentro da moldura */
+@media (hover: hover) and (pointer: fine) {
+  .palco:hover {
+    box-shadow: var(--sombra);
+    transform: translateY(-2px);
+  }
+
+  .palco:hover .moldura__tela > *,
+  .palco:hover .celular__tela > * {
+    transform: scale(1.025);
+  }
+}
+
+/* Estudo de caso em 4 colunas: problema, solução, papel, resultado */
+.caso {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px var(--gap);
+}
+
+.caso__item {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--fio);
+}
+
+.caso__item dd {
+  color: var(--tinta-2);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.premios {
+  display: grid;
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+}
+
+.premios li,
+.premio {
+  display: grid;
+  gap: 2px;
+}
+
+.premio__topo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.premio__lugar {
+  color: var(--tinta);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.premio__data {
+  color: var(--tinta-3);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.premio__texto {
+  color: var(--tinta-2);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* Norma Clara e Sonora: dois cartões lado a lado */
+.projetos__par {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(48px, 6vw, 72px) var(--gap);
+  margin-top: clamp(72px, 9vw, 128px);
+}
+
+.cartao {
+  display: grid;
+  align-content: start;
+  gap: 28px;
+}
+
+.cartao__texto {
+  display: grid;
+  gap: 12px;
+  color: var(--tinta-2);
+}
+
+.cartao__nome {
+  margin-top: -4px;
+  color: var(--tinta);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.cartao__detalhe {
+  font-size: 0.9375rem;
+}
+
+.cartao__texto .premio {
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--fio);
+}
+
+.cartao__texto .tags {
+  margin-top: 4px;
+}
+
+.cartao__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin-top: 4px;
+}
+
+/* Links com ícone: área de toque de 44px sem mudar o visual */
+.cartao__links .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  background-position: 0 calc(100% - 10px), 0 calc(100% - 10px);
+  font-weight: 500;
+}
+
+.link .icone-externo {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  transition: transform var(--t-medio) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover .icone-externo {
+    transform: translate(2px, -2px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .caso {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 759px) {
+  .projetos__par {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .destaque__cabeca .botao {
+    width: 100%;
+  }
+}
+
+@media (max-width: 599px) {
+  .caso {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
 /* Movimento ---------------------------------------------------------------
    Só acontece uma vez, ao carregar a página, e só se a pessoa não pediu
    "reduzir movimento" no sistema. Nenhuma seção aparece ao rolar. */
