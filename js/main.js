@@ -52,7 +52,7 @@ const textosEn = {
   'meta.descricao': 'Web developer and IT student at IFTO, Brazil. LembreMED, a system I helped build, is live and has won three awards. Available for internships from January 2027.',
 
   'a11y.pular': 'Skip to content',
-  'a11y.marca': 'Diogo Araujo Nunes, back to top',
+  'a11y.marca': 'Diogo Nunes, back to top',
   'a11y.navPrincipal': 'Main',
   'a11y.navCelular': 'Menu',
   'a11y.idioma': 'Language',
@@ -251,9 +251,13 @@ function temaAtual() {
   return raiz.dataset.theme || (sistemaEscuro.matches ? 'dark' : 'light');
 }
 
-// A barra do navegador no celular acompanha a cor de fundo do tema
+// A barra do navegador no celular acompanha a cor de fundo do tema.
+// As cores ficam fixas aqui (iguais a --fundo no CSS) para não precisar
+// "perguntar" ao CSS, o que obrigaria o navegador a recalcular a página toda.
+const corDaBarra = { light: '#f4f1ea', dark: '#151412' };
+
 function atualizarCorDoNavegador() {
-  const cor = getComputedStyle(raiz).getPropertyValue('--fundo').trim();
+  const cor = corDaBarra[temaAtual()];
   document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => meta.setAttribute('content', cor));
 }
 
@@ -278,15 +282,18 @@ atualizarBotaoTema();
 
 /* 4. Topo -------------------------------------------------------------------
    a) Ganha fundo translúcido quando a página sai do topo.
+      Em vez de ouvir cada rolagem, um "sentinela" invisível de 8px fica no
+      alto da página: quando ele sai da tela, o topo muda. É mais leve.
    b) Marca no menu a seção que está na tela (aria-current). */
 const topo = document.querySelector('[data-topo]');
+const sentinela = document.createElement('div');
+sentinela.setAttribute('aria-hidden', 'true');
+sentinela.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:8px;pointer-events:none';
+document.body.prepend(sentinela);
 
-function atualizarTopo() {
-  topo.classList.toggle('rolou', window.scrollY > 8);
-}
-
-window.addEventListener('scroll', atualizarTopo, { passive: true });
-atualizarTopo();
+new IntersectionObserver(([entrada]) => {
+  topo.classList.toggle('rolou', !entrada.isIntersecting);
+}).observe(sentinela);
 
 const linksDoMenu = document.querySelectorAll('.menu a[href^="#"]');
 const observadorDeSecoes = new IntersectionObserver(
