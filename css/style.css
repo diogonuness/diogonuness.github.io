@@ -206,17 +206,13 @@ a {
 
 
 /* 04. Layout ---------------------------------------------------------------
-   .wrap centraliza o conteúdo com margens laterais iguais.
-   .grade é o grid de 12 colunas usado nas seções. */
+   .wrap centraliza o conteúdo com margens laterais iguais (no máximo 1200px).
+   Dentro dele, as seções seguem um grid de 12 colunas com o mesmo --gap:
+   4 colunas = 3 + 3 + 3 + 3, cartões = 6 + 6, números = 4 + 4 + 4,
+   Sobre = foto em 4 colunas e texto em 7. */
 .wrap {
   width: min(100% - 2 * var(--margem), var(--largura));
   margin-inline: auto;
-}
-
-.grade {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--gap);
 }
 
 
