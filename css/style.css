@@ -1729,6 +1729,11 @@ a {
   .sobre__texto {
     grid-column: 6 / -1;
   }
+
+  .fatos {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
 }
 
 @media (max-width: 759px) {
@@ -1962,7 +1967,7 @@ a {
   }
 
   .email__link {
-    padding: 0 4px;
+    padding: 8px 4px; /* 44px de altura para o toque */
   }
 
   .email__copiar {

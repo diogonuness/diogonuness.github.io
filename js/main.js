@@ -121,7 +121,7 @@ const textosEn = {
   'sonora.figma': 'View in Figma',
 
   'data.dez25': 'Dec 2025',
-  'conquistas.titulo': 'Awards',
+  'conquistas.titulo': 'Achievements',
   'conquistas.nota': 'Nov 2025 — Nov 2026',
   'numeros.premios': 'awards',
   'numeros.bolsa': 'CNPq research scholarship',
