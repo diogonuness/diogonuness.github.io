@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://diogonuness.github.io/sitemap.xml

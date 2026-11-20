@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .fundo { fill: #1c1b18; }
+    .letras { fill: #f4f1ea; }
+    .ponto { fill: #ee5420; }
+    @media (prefers-color-scheme: dark) {
+      .fundo { fill: #eeebe4; }
+      .letras { fill: #151412; }
+      .ponto { fill: #ff6b2c; }
+    }
+  </style>
+  <rect class="fundo" width="64" height="64" rx="15" />
+  <path class="letras" d="M9.8 42V22H16.65Q21.5 22 24.11 24.61Q26.73 27.21 26.73 32.03Q26.73 36.82 24.16 39.41Q21.59 42 16.82 42ZM13.96 38.48H16.65Q19.6 38.48 21.02 36.89Q22.44 35.29 22.44 32.01Q22.44 28.71 21.02 27.11Q19.6 25.52 16.65 25.52H13.96ZM29.32 42V22H33.95L42.04 36.04V22H46.2V42H41.49L33.47 28.42V42Z" />
+  <circle class="ponto" cx="51.3" cy="39.1" r="2.9" />
+</svg>

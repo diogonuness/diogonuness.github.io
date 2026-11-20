@@ -1997,6 +1997,30 @@ a {
 }
 
 
+/* 17. Página 404 ------------------------------------------------------------ */
+.erro {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 20px;
+  min-height: 100svh;
+  padding-block: 64px;
+}
+
+.erro__titulo {
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.erro__texto {
+  max-width: 32rem;
+  margin-bottom: 12px;
+  color: var(--tinta-2);
+}
+
+
 /* Movimento ---------------------------------------------------------------
    Só acontece uma vez, ao carregar a página, e só se a pessoa não pediu
    "reduzir movimento" no sistema. Nenhuma seção aparece ao rolar. */
