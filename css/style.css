@@ -1831,6 +1831,172 @@ a {
 }
 
 
+/* 15. Contato --------------------------------------------------------------- */
+.contato {
+  padding-bottom: clamp(96px, 12vw, 168px);
+}
+
+.contato .secao__topo {
+  align-items: center;
+}
+
+.contato__frase {
+  max-width: 13em;
+  font-size: clamp(2.5rem, 1rem + 5.2vw, 6rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+/* A segunda frase em cinza: é a resposta à pergunta da primeira */
+.contato__frase-2 {
+  color: var(--tinta-3);
+}
+
+.contato__sub {
+  max-width: 36rem;
+  margin-top: clamp(20px, 3vw, 32px);
+  color: var(--tinta-2);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* O e-mail num "campo" com o botão de copiar dentro */
+.email {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 46rem;
+  margin-top: clamp(36px, 5vw, 56px);
+  padding: 8px 8px 8px clamp(20px, 3vw, 28px);
+  border: 1px solid var(--fio-forte);
+  border-radius: 999px;
+  background: var(--superficie);
+}
+
+.email__link {
+  min-width: 0;
+  padding-block: 8px;
+  color: var(--tinta);
+  font-size: clamp(1.125rem, 0.9rem + 1vw, 1.625rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+  transition: color var(--t-medio) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .email__link:hover {
+    color: var(--destaque);
+  }
+}
+
+.email__copiar {
+  flex: none;
+}
+
+/* Troca do ícone de copiar pelo de "ok": os dois ficam empilhados no mesmo lugar */
+.email__icones {
+  display: inline-grid;
+  width: 16px;
+  height: 16px;
+}
+
+.email__icones svg {
+  grid-area: 1 / 1;
+  transition: opacity var(--t-rapido) ease, transform var(--t-medio) var(--ease-out);
+}
+
+.email__icones .icone-ok,
+.email__copiar.copiado .icone-copiar {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.email__copiar.copiado .icone-ok {
+  opacity: 1;
+  transform: none;
+}
+
+.contato__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 32px;
+  margin-top: clamp(24px, 3vw, 36px);
+  list-style: none;
+  padding: 0;
+}
+
+.contato__links .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  background-position: 0 calc(100% - 10px), 0 calc(100% - 10px);
+  font-weight: 500;
+}
+
+.contato__links .icone-baixo {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--t-medio) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover .icone-baixo {
+    transform: translateY(2px);
+  }
+}
+
+@media (max-width: 599px) {
+  .email {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .email__link {
+    padding: 0 4px;
+  }
+
+  .email__copiar {
+    width: 100%;
+  }
+}
+
+
+/* 16. Rodapé ---------------------------------------------------------------- */
+.rodape {
+  padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--fio);
+  color: var(--tinta-3);
+  font-size: var(--fs-pequeno);
+}
+
+.rodape__linha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 24px;
+}
+
+.rodape .link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  background-position: 0 calc(100% - 12px), 0 calc(100% - 12px);
+  color: var(--tinta-2);
+}
+
+
 /* Movimento ---------------------------------------------------------------
    Só acontece uma vez, ao carregar a página, e só se a pessoa não pediu
    "reduzir movimento" no sistema. Nenhuma seção aparece ao rolar. */

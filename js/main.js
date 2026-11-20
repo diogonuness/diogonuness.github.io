@@ -8,6 +8,8 @@
    4. Topo: fundo ao rolar e link da seção atual
    5. Menu em tela cheia (celular)
    6. Régua da trajetória
+   7. Copiar e-mail
+   8. Ano do rodapé
    ========================================================================== */
 
 const raiz = document.documentElement;
@@ -146,6 +148,21 @@ const textosEn = {
   'sobre.idiomasTexto': 'Portuguese (native) · English B1: Michigan English Test (Nov 2025) and the full Fisk course (2022–2025)',
 
   'stack.nota': 'The tools behind the projects above',
+
+  'contato.rotulo': 'Contact',
+  'contato.frase1': 'Have an opening for 2027?',
+  'contato.frase2': 'Let’s talk.',
+  'contato.sub': 'Available from January 2027 for internships, part-time or contract roles, on-site, hybrid or remote.',
+  'contato.copiar': 'Copy',
+  'contato.copiado': 'Copied',
+  'contato.avisoCopiado': 'Email copied',
+  'contato.avisoSelecionado': 'Email selected. Press Ctrl+C to copy.',
+  'contato.lattes': 'Lattes CV',
+  'contato.pdf': 'Résumé (PDF)',
+  'a11y.copiar': 'Copy email',
+
+  'rodape.feito': 'Built by me with HTML, CSS and JS',
+  'rodape.codigo': 'Site source',
 };
 
 const textosPt = {};
@@ -176,6 +193,10 @@ function guardarPortugues() {
   textosPt['meta.descricao'] = metaDescricao.getAttribute('content');
   textosPt['nav.menu'] = 'Menu';
   textosPt['nav.fechar'] = 'Fechar';
+  textosPt['contato.copiar'] = 'Copiar';
+  textosPt['contato.copiado'] = 'Copiado';
+  textosPt['contato.avisoCopiado'] = 'E-mail copiado';
+  textosPt['contato.avisoSelecionado'] = 'E-mail selecionado. Aperte Ctrl+C para copiar.';
 }
 
 // Devolve o texto da chave no idioma atual (se faltar em inglês, usa o português)
@@ -206,6 +227,7 @@ function aplicarIdioma(idioma) {
   });
 
   atualizarRotuloMenu();
+  atualizarRotuloCopiar();
 }
 
 guardarPortugues();
@@ -358,6 +380,59 @@ if (regua) {
   const meses = (agora.getFullYear() - 2024) * 12 + agora.getMonth();
   regua.style.setProperty('--hoje', String(Math.min(36, Math.max(0, meses))));
 }
+
+
+/* 7. Copiar e-mail ----------------------------------------------------------
+   O botão copia o texto do link de e-mail. Se o navegador não deixar usar a
+   área de transferência, o e-mail fica selecionado para a pessoa copiar.
+   O aviso (aria-live) é lido por leitores de tela. */
+const botaoCopiar = document.querySelector('[data-copiar]');
+const rotuloCopiar = document.querySelector('[data-copiar-rotulo]');
+const linkEmail = document.querySelector('[data-email]');
+const aviso = document.querySelector('[data-aviso]');
+let temporizadorCopiar;
+
+function atualizarRotuloCopiar() {
+  const copiado = botaoCopiar.classList.contains('copiado');
+  rotuloCopiar.textContent = copiado ? texto('contato.copiado') : texto('contato.copiar');
+}
+
+function selecionarEmail() {
+  const selecao = window.getSelection();
+  const intervalo = document.createRange();
+  intervalo.selectNodeContents(linkEmail);
+  selecao.removeAllRanges();
+  selecao.addRange(intervalo);
+}
+
+async function copiarEmail() {
+  const email = linkEmail.textContent.trim();
+  try {
+    await navigator.clipboard.writeText(email);
+  } catch (erro) {
+    selecionarEmail();
+    aviso.textContent = texto('contato.avisoSelecionado');
+    return;
+  }
+  botaoCopiar.classList.add('copiado');
+  atualizarRotuloCopiar();
+  aviso.textContent = texto('contato.avisoCopiado');
+  // Depois de 2 segundos o botão volta ao normal
+  window.clearTimeout(temporizadorCopiar);
+  temporizadorCopiar = window.setTimeout(() => {
+    botaoCopiar.classList.remove('copiado');
+    atualizarRotuloCopiar();
+    aviso.textContent = '';
+  }, 2000);
+}
+
+if (botaoCopiar && linkEmail) botaoCopiar.addEventListener('click', copiarEmail);
+
+
+/* 8. Ano do rodapé ----------------------------------------------------------- */
+document.querySelectorAll('[data-ano]').forEach((el) => {
+  el.textContent = String(new Date().getFullYear());
+});
 
 
 /* Por último: aplica o idioma salvo (se a pessoa já escolheu inglês antes) */

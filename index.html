@@ -592,6 +592,85 @@
       </div>
     </section>
 
+
+    <!-- ==================================================================
+         CONTATO: o fechamento. Frase grande, e-mail com botão de copiar e links.
+         ================================================================== -->
+    <section class="secao contato" id="contato" aria-labelledby="contato-titulo">
+      <div class="wrap">
+        <div class="secao__topo">
+          <p class="rotulo" data-i18n="contato.rotulo">Contato</p>
+          <p class="status">
+            <span class="ponto" aria-hidden="true"></span>
+            <span data-i18n="hero.status">Disponível para estágio · jan/2027</span>
+          </p>
+        </div>
+
+        <h2 class="contato__frase" id="contato-titulo">
+          <span data-i18n="contato.frase1">Tem uma vaga para 2027?</span>
+          <span class="contato__frase-2" data-i18n="contato.frase2">Vamos conversar.</span>
+        </h2>
+        <p class="contato__sub" data-i18n="contato.sub">Disponível a partir de janeiro de 2027 para estágio, meio período ou contrato, presencial, híbrido ou remoto.</p>
+
+        <div class="email">
+          <!-- TROCAR: seu e-mail, nos DOIS lugares desta linha (no href e no texto). O botão copia o texto. -->
+          <a class="email__link" href="mailto:seu-email@example.com" data-email>seu-email@example.com</a>
+          <button class="botao botao--secundario email__copiar" type="button" aria-label="Copiar e-mail" data-copiar data-i18n-attr="aria-label:a11y.copiar">
+            <span class="email__icones" aria-hidden="true">
+              <svg class="icone-copiar" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="2" /><path d="M10.5 3.5v-.5a1.5 1.5 0 0 0-1.5-1.5H4A1.5 1.5 0 0 0 2.5 3v5A1.5 1.5 0 0 0 4 9.5h.5" /></svg>
+              <svg class="icone-ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7" /></svg>
+            </span>
+            <span data-copiar-rotulo>Copiar</span>
+          </button>
+        </div>
+        <!-- Avisa leitores de tela quando o e-mail é copiado -->
+        <p class="sr-only" aria-live="polite" data-aviso></p>
+
+        <ul class="contato__links" role="list">
+          <li>
+            <a class="link" href="https://linkedin.com/in/diogoaraujonunes" target="_blank" rel="noopener">
+              LinkedIn<span class="sr-only" data-i18n="a11y.novaAba">(abre em nova aba)</span>
+              <svg class="icone-externo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
+            </a>
+          </li>
+          <li>
+            <a class="link" href="https://github.com/diogonuness" target="_blank" rel="noopener">
+              GitHub<span class="sr-only" data-i18n="a11y.novaAba">(abre em nova aba)</span>
+              <svg class="icone-externo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
+            </a>
+          </li>
+          <li>
+            <!-- TROCAR: link do seu Currículo Lattes (ex.: http://lattes.cnpq.br/0000000000000000) -->
+            <a class="link" href="#TROCAR-link-do-lattes" target="_blank" rel="noopener">
+              <span data-i18n="contato.lattes">Currículo Lattes</span><span class="sr-only" data-i18n="a11y.novaAba">(abre em nova aba)</span>
+              <svg class="icone-externo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
+            </a>
+          </li>
+          <li>
+            <!-- TROCAR: coloque o arquivo cv.pdf na raiz do repositório -->
+            <a class="link" href="/cv.pdf" download="curriculo-diogo-araujo-nunes.pdf">
+              <span data-i18n="contato.pdf">Currículo em PDF</span>
+              <svg class="icone-baixo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10" /></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
   </main>
+
+  <!-- ====================================================================
+       RODAPÉ: uma linha só.
+       ==================================================================== -->
+  <footer class="rodape">
+    <div class="wrap rodape__linha">
+      <p>© <span data-ano>2026</span> Diogo Araujo Nunes</p>
+      <p data-i18n="rodape.feito">Feito por mim com HTML, CSS e JS</p>
+      <a class="link" href="https://github.com/diogonuness/diogonuness.github.io" target="_blank" rel="noopener">
+        <span data-i18n="rodape.codigo">Código do site</span><span class="sr-only" data-i18n="a11y.novaAba">(abre em nova aba)</span>
+        <svg class="icone-externo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
+      </a>
+    </div>
+  </footer>
 </body>
 </html>
