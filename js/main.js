@@ -132,6 +132,20 @@ const textosEn = {
   'conquistas.viva': 'Biological and Health Sciences · Viva Ciência',
   'conquistas.vivaNota': 'Led to the CNPq scholarship.',
   'conquistas.campus': 'Ideathon · Campus Party Goiás',
+
+  'sobre.titulo': 'About',
+  'sobre.nota': 'Araguaína, Tocantins, Brazil',
+  'sobre.texto': 'I’m in the final year of the IT Technician program, integrated with high school, at IFTO in Araguaína, Brazil, and I finish in December 2026. Since December 2025 I’ve held a CNPq junior research scholarship at LabSIS, where I build LembreMED. Next comes a degree in Software Engineering, and I want to start it already working on a development team. My English is B1, certified by the Michigan English Test.',
+  'sobre.formacao': 'Education',
+  'sobre.formacaoTexto': 'IT Technician program integrated with high school · IFTO · 2024–2026',
+  'sobre.proximo': 'Next step',
+  'sobre.proximoTexto': 'Bachelor’s degree in Software Engineering',
+  'sobre.pesquisa': 'Research',
+  'sobre.pesquisaTexto': 'Junior research scholarship (CNPq) at LabSIS · LembreMED · Dec 2025–Dec 2026',
+  'sobre.idiomas': 'Languages',
+  'sobre.idiomasTexto': 'Portuguese (native) · English B1: Michigan English Test (Nov 2025) and the full Fisk course (2022–2025)',
+
+  'stack.nota': 'The tools behind the projects above',
 };
 
 const textosPt = {};

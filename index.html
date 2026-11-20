@@ -515,6 +515,83 @@
       </div>
     </section>
 
+
+    <!-- ==================================================================
+         SOBRE: quatro frases em primeira pessoa + foto + fatos rápidos.
+         ================================================================== -->
+    <section class="secao" id="sobre" aria-labelledby="sobre-titulo">
+      <div class="wrap">
+        <header class="secao__topo">
+          <h2 class="secao__titulo" id="sobre-titulo" data-i18n="sobre.titulo">Sobre</h2>
+          <p class="rotulo" data-i18n="sobre.nota">Araguaína, Tocantins, Brasil</p>
+        </header>
+
+        <div class="sobre">
+          <figure class="sobre__foto">
+            <!-- TROCAR: sua foto (retrato 4:5, de preferência 800 × 1000, em .webp).
+                 Apague o <svg> abaixo e coloque no lugar:
+                 <img src="assets/img/diogo.webp" alt="Foto de Diogo Araujo Nunes" width="800" height="1000" loading="lazy" decoding="async"> -->
+            <svg class="ilustra" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect class="il-realce" width="400" height="500" />
+              <g class="il-contorno">
+                <path d="M28 52V28h24M348 28h24v24M372 448v24h-24M52 472H28v-24" />
+              </g>
+              <path class="il-medio" transform="translate(64 114) scale(4.4)" d="M9.8 42V22H16.65Q21.5 22 24.11 24.61Q26.73 27.21 26.73 32.03Q26.73 36.82 24.16 39.41Q21.59 42 16.82 42ZM13.96 38.48H16.65Q19.6 38.48 21.02 36.89Q22.44 35.29 22.44 32.01Q22.44 28.71 21.02 27.11Q19.6 25.52 16.65 25.52H13.96ZM29.32 42V22H33.95L42.04 36.04V22H46.2V42H41.49L33.47 28.42V42Z" />
+              <circle class="il-sinal" cx="289.7" cy="286" r="12.8" />
+            </svg>
+          </figure>
+
+          <div class="sobre__texto">
+            <p class="sobre__paragrafo" data-i18n="sobre.texto">Estou no último ano do Técnico em Informática integrado ao Ensino Médio do IFTO, em Araguaína (TO), e concluo o curso em dezembro de 2026. Desde dezembro de 2025 sou bolsista de Iniciação Científica Júnior do CNPq no LabSIS, onde desenvolvo o LembreMED. O próximo passo é a graduação em Engenharia de Software, e quero começá-la já trabalhando num time de desenvolvimento. Falo inglês no nível B1, com certificado do Michigan English Test.</p>
+
+            <dl class="fatos">
+              <div class="fatos__item">
+                <dt class="rotulo" data-i18n="sobre.formacao">Formação</dt>
+                <dd data-i18n="sobre.formacaoTexto">Técnico em Informática integrado ao Ensino Médio · IFTO · 2024–2026</dd>
+              </div>
+              <div class="fatos__item">
+                <dt class="rotulo" data-i18n="sobre.proximo">Próximo passo</dt>
+                <dd data-i18n="sobre.proximoTexto">Graduação em Engenharia de Software</dd>
+              </div>
+              <div class="fatos__item">
+                <dt class="rotulo" data-i18n="sobre.pesquisa">Pesquisa</dt>
+                <dd data-i18n="sobre.pesquisaTexto">Iniciação Científica Júnior (CNPq) no LabSIS · LembreMED · dez/2025–dez/2026</dd>
+              </div>
+              <div class="fatos__item">
+                <dt class="rotulo" data-i18n="sobre.idiomas">Idiomas</dt>
+                <dd data-i18n="sobre.idiomasTexto">Português (nativo) · Inglês B1: Michigan English Test (nov/2025) e curso completo na Fisk (2022–2025)</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================================================================
+         STACK: ícones oficiais (Devicon e Simple Icons) servidos do site.
+         O alt fica vazio porque o nome já está escrito ao lado do ícone.
+         ================================================================== -->
+    <section class="secao" id="stack" aria-labelledby="stack-titulo">
+      <div class="wrap">
+        <header class="secao__topo">
+          <h2 class="secao__titulo" id="stack-titulo">Stack</h2>
+          <p class="rotulo" data-i18n="stack.nota">As ferramentas dos projetos acima</p>
+        </header>
+
+        <ul class="stack" role="list">
+          <li class="stack__item"><img src="assets/icons/php.svg" alt="" width="40" height="40" loading="lazy" decoding="async"><span>PHP</span></li>
+          <li class="stack__item"><img src="assets/icons/laravel.svg" alt="" width="40" height="40" loading="lazy" decoding="async"><span>Laravel</span></li>
+          <li class="stack__item"><span class="icone-filament" aria-hidden="true"></span><span>Filament</span></li>
+          <li class="stack__item"><img src="assets/icons/javascript.svg" alt="" width="40" height="40" loading="lazy" decoding="async"><span>JavaScript</span></li>
+          <li class="stack__item"><img src="assets/icons/html.svg" alt="" width="40" height="40" loading="lazy" decoding="async"><span>HTML</span></li>
+          <li class="stack__item"><img src="assets/icons/css.svg" alt="" width="40" height="40" loading="lazy" decoding="async"><span>CSS</span></li>
+          <li class="stack__item"><img src="assets/icons/git.svg" alt="" width="40" height="40" loading="lazy" decoding="async"><span>Git</span></li>
+          <li class="stack__item"><img src="assets/icons/figma.svg" alt="" width="40" height="40" loading="lazy" decoding="async"><span>Figma</span></li>
+        </ul>
+      </div>
+    </section>
+
   </main>
 </body>
 </html>

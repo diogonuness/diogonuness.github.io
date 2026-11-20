@@ -1663,6 +1663,174 @@ a {
 }
 
 
+/* 13. Sobre ----------------------------------------------------------------- */
+.sobre {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  row-gap: 40px;
+  align-items: start;
+}
+
+.sobre__foto {
+  grid-column: 1 / span 4;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--raio);
+  background: var(--superficie-2);
+}
+
+.sobre__foto > img,
+.sobre__foto > svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sobre__texto {
+  grid-column: 6 / span 7;
+  display: grid;
+  gap: clamp(36px, 5vw, 56px);
+}
+
+.sobre__paragrafo {
+  max-width: 34em; /* ~65 caracteres por linha: leitura confortável */
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  letter-spacing: -0.012em;
+  text-wrap: pretty;
+}
+
+.fatos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px var(--gap);
+}
+
+.fatos__item {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--fio);
+}
+
+.fatos__item dd {
+  color: var(--tinta-2);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 899px) {
+  .sobre__foto {
+    grid-column: 1 / span 5;
+  }
+
+  .sobre__texto {
+    grid-column: 6 / -1;
+  }
+}
+
+@media (max-width: 759px) {
+  .sobre__foto {
+    grid-column: 1 / span 8;
+    max-width: 340px;
+  }
+
+  .sobre__texto {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 599px) {
+  .sobre__foto {
+    grid-column: 1 / -1;
+    max-width: 280px;
+  }
+
+  .fatos {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+/* 14. Stack ----------------------------------------------------------------- */
+.stack {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+.stack__item {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 14px;
+  min-height: 124px;
+  padding: 20px 8px 16px;
+  border: 1px solid var(--fio);
+  border-radius: 14px;
+  background: var(--superficie);
+  color: var(--tinta-2);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.stack__item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* A marca do Filament é preta: vira máscara para seguir a cor do tema */
+.icone-filament {
+  display: block;
+  width: 72px;
+  height: 40px;
+  background: var(--tinta);
+  -webkit-mask: url("../assets/icons/filament.svg") center / contain no-repeat;
+  mask: url("../assets/icons/filament.svg") center / contain no-repeat;
+}
+
+@media (max-width: 899px) {
+  .stack {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .stack__item {
+    grid-template-columns: 48px minmax(0, 1fr);
+    justify-items: start;
+    align-items: center;
+    gap: 10px;
+    min-height: 64px;
+    padding: 10px 12px 10px 8px;
+    text-align: left;
+  }
+
+  .stack__item img {
+    justify-self: center;
+    width: 30px;
+    height: 30px;
+  }
+
+  .stack__item .icone-filament {
+    justify-self: center;
+    width: 48px;
+    height: 30px;
+  }
+}
+
+
 /* Movimento ---------------------------------------------------------------
    Só acontece uma vez, ao carregar a página, e só se a pessoa não pediu
    "reduzir movimento" no sistema. Nenhuma seção aparece ao rolar. */
