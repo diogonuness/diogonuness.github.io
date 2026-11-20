@@ -1,0 +1,9 @@
+# Arquivos de ferramentas locais: não fazem parte do site
+.playwright-mcp/
+.lighthouse/
+node_modules/
+
+# Lixo de sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
