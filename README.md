@@ -1,7 +1,7 @@
 # diogonuness.github.io
 
 Site pessoal de **Diogo Araujo Nunes**, desenvolvedor web e estudante de Informática no IFTO.
-Reúne os projetos (LembreMED, Norma Clara e Sonora), os prêmios e o contato, em português e em inglês.
+Reúne os projetos (LembreMED e Norma Clara), os prêmios e o contato, em português e em inglês.
 
 **No ar:** <https://diogonuness.github.io>
 

@@ -87,10 +87,9 @@ const textosEn = {
 
   'a11y.novaAba': '(opens in a new tab)',
   'a11y.tecnologias': 'Technologies',
-  'a11y.ferramentas': 'Tools',
 
   'projetos.titulo': 'Projects',
-  'projetos.nota': '2 live systems · 1 interface prototype',
+  'projetos.nota': '2 live systems',
 
   'lembremed.rotulo': 'Main project · live',
   'lembremed.resumo': 'A web system that helps older adults and their caregivers organize medication and remember every dose.',
@@ -114,11 +113,6 @@ const textosEn = {
   'norma.premio': 'V Ideathon Maker, 17th JICE (IFTO)',
   'norma.demo': 'Live demo',
   'norma.codigo': 'Code on GitHub',
-
-  'sonora.rotulo': 'Interface design · Figma',
-  'sonora.resumo': 'A mobile prototype of a music streaming app, designed in Figma for the User Interface course at IFTO.',
-  'sonora.tag': 'Mobile prototype',
-  'sonora.figma': 'View in Figma',
 
   'data.dez25': 'Dec 2025',
   'conquistas.titulo': 'Achievements',
@@ -147,7 +141,7 @@ const textosEn = {
   'sobre.idiomas': 'Languages',
   'sobre.idiomasTexto': 'Portuguese (native) · English B1: Michigan English Test (Nov 2025) and the full Fisk course (2022–2025)',
 
-  'stack.nota': 'The tools behind the projects above',
+  'stack.nota': 'Languages, frameworks and tools',
 
   'contato.rotulo': 'Contact',
   'contato.frase1': 'Have an opening for 2027?',

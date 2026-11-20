@@ -1150,8 +1150,8 @@ a {
   margin-bottom: -9%;
 }
 
-/* Nos cartões, o palco tem proporção fixa: os dois ficam da mesma altura
-   e o que passar da borda de baixo é cortado (overflow: hidden) */
+/* No cartão do Norma Clara, o palco tem proporção fixa: o que passar
+   da borda de baixo é cortado (overflow: hidden), como no LembreMED */
 .palco--cartao {
   align-items: flex-start;
   aspect-ratio: 16 / 9.5;
@@ -1214,47 +1214,12 @@ a {
 
 /* Print (img) ou ilustração (svg) dentro da moldura: preenche e dá zoom no hover */
 .moldura__tela > img,
-.moldura__tela > svg,
-.celular__tela > img,
-.celular__tela > svg {
+.moldura__tela > svg {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
   transition: transform 700ms var(--ease-out);
-}
-
-/* Moldura de celular (Sonora) */
-.celular {
-  position: relative;
-  flex: 0 1 200px;
-  aspect-ratio: 9 / 19.5;
-  padding: 6px;
-  border-radius: 30px;
-  background: var(--superficie);
-  box-shadow: 0 0 0 1px var(--fio-forte), var(--sombra);
-}
-
-/* a "ilha" no topo da tela */
-.celular::before {
-  content: "";
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  z-index: 1;
-  width: 30%;
-  height: 13px;
-  border-radius: 999px;
-  background: #121110; /* quase preto nos dois temas, como num aparelho de verdade */
-  transform: translateX(-50%);
-}
-
-.celular__tela {
-  display: block;
-  overflow: hidden;
-  height: 100%;
-  border-radius: 24px;
-  background: var(--fundo);
 }
 
 /* Cores das ilustrações provisórias: seguem o tema (claro ou escuro) */
@@ -1268,7 +1233,6 @@ a {
 .il-marca { fill: color-mix(in srgb, var(--sinal) 16%, transparent); }
 .il-contorno { fill: none; stroke: var(--fio-forte); stroke-width: 2; }
 .il-contorno-sinal { fill: none; stroke: var(--sinal); stroke-width: 2; }
-.il-linha { fill: none; stroke: var(--fundo); stroke-opacity: 0.35; stroke-width: 1; }
 
 /* Hover: o palco sobe 2px e a imagem dá um zoom leve dentro da moldura */
 @media (hover: hover) and (pointer: fine) {
@@ -1277,8 +1241,7 @@ a {
     transform: translateY(-2px);
   }
 
-  .palco:hover .moldura__tela > *,
-  .palco:hover .celular__tela > * {
+  .palco:hover .moldura__tela > * {
     transform: scale(1.025);
   }
 }
@@ -1344,21 +1307,22 @@ a {
   line-height: 1.5;
 }
 
-/* Norma Clara e Sonora: dois cartões lado a lado */
-.projetos__par {
+/* Norma Clara: projeto médio. No desktop, a moldura ocupa 7 colunas e o texto 4,
+   com uma coluna de respiro entre os dois. Em telas menores, um embaixo do outro. */
+.cartao {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(48px, 6vw, 72px) var(--gap);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  gap: 28px var(--gap);
   margin-top: clamp(72px, 9vw, 128px);
 }
 
-.cartao {
-  display: grid;
-  align-content: start;
-  gap: 28px;
+.cartao > .palco {
+  grid-column: 1 / span 7;
 }
 
 .cartao__texto {
+  grid-column: 9 / span 4;
   display: grid;
   gap: 12px;
   color: var(--tinta-2);
@@ -1417,17 +1381,34 @@ a {
   }
 }
 
+@media (max-width: 1199px) {
+  .cartao > .palco {
+    grid-column: 1 / span 6;
+  }
+
+  .cartao__texto {
+    grid-column: 7 / -1;
+  }
+}
+
 @media (max-width: 1023px) {
   .caso {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 759px) {
-  .projetos__par {
-    grid-template-columns: minmax(0, 1fr);
+@media (max-width: 899px) {
+  .cartao > .palco,
+  .cartao__texto {
+    grid-column: 1 / -1;
   }
 
+  .cartao__texto {
+    max-width: 40rem;
+  }
+}
+
+@media (max-width: 759px) {
   .destaque__cabeca .botao {
     width: 100%;
   }
