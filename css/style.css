@@ -148,6 +148,8 @@ html {
   scroll-behavior: smooth;
   /* ao clicar num link de âncora, a seção não fica escondida atrás do topo fixo */
   scroll-padding-top: calc(var(--altura-topo) + 24px);
+  /* reserva o espaço da barra de rolagem: a página não "pula" quando o print ampliado trava a rolagem */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -1217,14 +1219,21 @@ a {
   transition: transform 700ms var(--ease-out);
 }
 
-/* Hover (só nos palcos que são links): sobe 2px e o print dá um zoom leve */
+/* Os prints de detalhe abrem ampliados ao clicar (ver "Print ampliado", abaixo) */
+[data-ampliar] .palco {
+  cursor: zoom-in;
+}
+
+/* Hover (só nos palcos clicáveis): sobe 2px e o print dá um zoom leve */
 @media (hover: hover) and (pointer: fine) {
-  a.palco:hover {
+  a.palco:hover,
+  [data-ampliar] .palco:hover {
     box-shadow: var(--sombra);
     transform: translateY(-2px);
   }
 
-  a.palco:hover .moldura__tela > img {
+  a.palco:hover .moldura__tela > img,
+  [data-ampliar] .palco:hover .moldura__tela > img {
     transform: scale(1.025);
   }
 }
@@ -1290,9 +1299,10 @@ a {
   line-height: 1.5;
 }
 
-/* Vitrine: uma moldura (7 colunas) e um texto (4 colunas), com uma coluna de
-   respiro entre os dois. A versão "invertida" põe o texto à esquerda.
-   Em telas menores, a moldura vem primeiro e o texto embaixo. */
+/* Vitrine: uma moldura (8 colunas) e um texto (4 colunas). O padding do texto
+   dá o respiro entre os dois sem sair do grid. A versão "invertida" põe o texto
+   à esquerda. Abaixo de 1200px a moldura ocupa a largura toda e o texto vem
+   embaixo: os prints precisam de largura para dar para ler. */
 .vitrine {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -1302,20 +1312,23 @@ a {
 
 .vitrine > .palco {
   grid-row: 1;
-  grid-column: 1 / span 7;
+  grid-column: 1 / span 8;
 }
 
 .vitrine > .vitrine__texto {
   grid-row: 1;
-  grid-column: 9 / span 4;
+  grid-column: 9 / -1;
+  padding-left: var(--gap);
 }
 
 .vitrine--invertida > .palco {
-  grid-column: 6 / -1;
+  grid-column: 5 / -1;
 }
 
 .vitrine--invertida > .vitrine__texto {
   grid-column: 1 / span 4;
+  padding-left: 0;
+  padding-right: var(--gap);
 }
 
 /* Norma Clara: começa com bastante respiro depois do LembreMED */
@@ -1330,6 +1343,23 @@ a {
   margin-top: clamp(12px, 3vw, 32px);
 }
 
+/* Detalhe largo (painel do LembreMED): a moldura ocupa a largura toda e a
+   legenda vem embaixo, com a mesma largura de leitura dos outros textos */
+.detalhe--largo {
+  display: grid;
+  gap: 24px;
+}
+
+.detalhe--largo > .detalhe__texto {
+  max-width: 40rem;
+}
+
+/* Corte menor que o padrão (-6%): assim as datas e a legenda do gráfico, que
+   ficam na parte de baixo do print, continuam visíveis */
+.detalhe--largo .palco > .moldura {
+  margin-bottom: -1.5%;
+}
+
 .detalhe__texto {
   display: grid;
   gap: 10px;
@@ -1338,6 +1368,39 @@ a {
   color: var(--tinta-2);
   font-size: 0.9375rem;
   line-height: 1.6;
+}
+
+/* "Ver em tamanho real": um botão com cara de link (mesmo sublinhado que se
+   desenha), com 44px de área de toque */
+.ampliar {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin-bottom: -10px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  background-position: 0 calc(100% - 10px), 0 calc(100% - 10px);
+  font-weight: 500;
+  cursor: zoom-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.ampliar svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  transition: transform var(--t-medio) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ampliar:hover svg {
+    transform: scale(1.15);
+  }
 }
 
 .cartao__texto {
@@ -1400,38 +1463,21 @@ a {
 }
 
 @media (max-width: 1199px) {
-  .vitrine > .palco {
-    grid-column: 1 / span 6;
-  }
-
-  .vitrine > .vitrine__texto {
-    grid-column: 7 / -1;
-  }
-
-  .vitrine--invertida > .palco {
-    grid-column: 7 / -1;
-  }
-
-  .vitrine--invertida > .vitrine__texto {
-    grid-column: 1 / span 6;
-  }
-}
-
-@media (max-width: 1023px) {
-  .caso {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 899px) {
   .vitrine > .palco,
   .vitrine > .vitrine__texto {
     grid-row: auto;
     grid-column: 1 / -1;
   }
 
-  .vitrine__texto {
+  .vitrine > .vitrine__texto {
     max-width: 40rem;
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .caso {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1445,6 +1491,92 @@ a {
   .caso {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+/* Print ampliado (<dialog>): ocupa a tela toda sobre um fundo escuro.
+   Dentro dele vale sempre a paleta do tema escuro, nos dois temas. */
+.zoom {
+  --tinta: #eeebe4;
+  --tinta-2: #aba598;
+  --tinta-3: #8e887c;
+  --superficie: #242220;
+  --destaque: #ff8a50;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--tinta);
+  overscroll-behavior: contain;
+}
+
+.zoom[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+/* Fundo quase opaco e desfocado: a página atrás vira só uma textura,
+   sem textos competindo com a legenda e a imagem */
+.zoom::backdrop {
+  background: rgb(21 20 18 / 0.97);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* Ao abrir, o foco vai para o próprio <dialog> (o JS chama zoom.focus()):
+   o leitor de tela anuncia a legenda e o Tab leva ao botão de fechar.
+   Ele ocupa a tela toda, então não precisa de anel de foco. */
+.zoom:focus-visible {
+  outline: none;
+}
+
+.zoom__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: max(8px, env(safe-area-inset-top, 0px)) var(--margem) 8px;
+}
+
+/* A imagem aparece no tamanho real e só diminui se não couber na tela.
+   No celular dá para usar o gesto de pinça para aproximar. */
+.zoom__corpo {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 0 var(--margem) max(var(--margem), env(safe-area-inset-bottom, 0px));
+}
+
+.zoom__corpo img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--raio-p);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08), 0 24px 64px -24px rgb(0 0 0 / 0.8);
+}
+
+/* Dica de pinça: só em telas de toque */
+.zoom__dica {
+  display: none;
+  padding: 0 var(--margem) max(20px, env(safe-area-inset-bottom, 0px));
+  text-align: center;
+}
+
+@media (pointer: coarse) {
+  .zoom__corpo {
+    padding-bottom: 16px;
+  }
+
+  .zoom__dica {
+    display: block;
+  }
+}
+
+/* Com o print aberto, a página atrás não rola */
+html:has(.zoom[open]) body {
+  overflow: hidden;
 }
 
 
@@ -1477,7 +1609,7 @@ a {
   font-variant-numeric: tabular-nums;
 }
 
-/* Linha do tempo (8 colunas) ao lado da foto da JICE (4 colunas) */
+/* Linha do tempo (8 colunas) ao lado da foto da JICE (4 colunas), a partir de 900px */
 .conquistas__corpo {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -1504,14 +1636,25 @@ a {
   object-position: 50% 30%;
 }
 
-@media (max-width: 1199px) {
+/* Abaixo de 900px a foto vai para baixo da lista na largura toda, num recorte
+   horizontal (o rosto e o título do pôster). Assim não sobra buraco ao lado. */
+@media (max-width: 899px) {
   .conquistas__corpo > .linha-tempo,
   .conquistas__foto {
     grid-column: 1 / -1;
   }
 
-  .conquistas__foto {
-    max-width: 420px;
+  .conquistas__foto img {
+    aspect-ratio: 3 / 2;
+    object-position: 50% 20%;
+  }
+}
+
+/* No celular a foto volta a ser vertical, na largura da tela */
+@media (max-width: 599px) {
+  .conquistas__foto img {
+    aspect-ratio: 4 / 5;
+    object-position: 50% 30%;
   }
 }
 
@@ -1599,27 +1742,45 @@ a {
   font-size: var(--fs-pequeno);
 }
 
-/* O projeto vira um link para o cartão dele, mais acima */
+/* O projeto vira um link para o cartão dele, mais acima.
+   A caixa do link tem 44px de altura (área de toque); a pílula desenhada pelo
+   ::before tem 28px. As margens negativas fazem a linha ocupar o mesmo espaço
+   de antes. */
 .evento__projeto {
   position: relative;
   align-self: start;
-  padding: 6px 12px;
-  border: 1px solid var(--fio-forte);
-  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-block: -8px;
+  padding: 0 12px;
   color: var(--tinta-2);
   font-family: var(--fonte-mono);
   font-size: 0.75rem;
   line-height: 1.2;
   text-decoration: none;
   white-space: nowrap;
-  transition: color var(--t-medio) ease, border-color var(--t-medio) ease, transform var(--t-rapido) var(--ease-out);
+  touch-action: manipulation;
+  transition: color var(--t-medio) ease, transform var(--t-rapido) var(--ease-out);
 }
 
-/* área de toque maior que o desenho da pílula */
-.evento__projeto::after {
+.evento__projeto::before {
   content: "";
   position: absolute;
-  inset: -8px -4px;
+  inset: 8px 0;
+  border: 1px solid var(--fio-forte);
+  border-radius: 999px;
+  transition: border-color var(--t-medio) ease;
+}
+
+/* O anel de foco contorna a pílula, não a caixa de toque */
+.evento__projeto:focus-visible {
+  outline: none;
+}
+
+.evento__projeto:focus-visible::before {
+  outline: 2px solid var(--destaque);
+  outline-offset: 3px;
 }
 
 .evento__projeto:active {
@@ -1628,12 +1789,17 @@ a {
 
 @media (hover: hover) and (pointer: fine) {
   .evento__projeto:hover {
-    border-color: var(--tinta-3);
     color: var(--tinta);
+  }
+
+  .evento__projeto:hover::before {
+    border-color: var(--tinta-3);
   }
 }
 
-@media (max-width: 899px) {
+/* Até 1199px a colocação e o evento ficam empilhados numa coluna só:
+   a lista divide a largura com a foto (900–1199px) ou com a tela menor */
+@media (max-width: 1199px) {
   .evento {
     grid-template-columns: var(--col-data) 33px minmax(0, 1fr) auto;
     row-gap: 2px;
@@ -1700,7 +1866,7 @@ a {
     grid-column: 2;
     grid-row: auto;
     justify-self: start;
-    margin-top: 8px;
+    margin-top: 0; /* os 8px de respiro acima da pílula já estão dentro da caixa de 44px */
   }
 }
 
@@ -2136,6 +2302,40 @@ a {
 
   .regua__alvo::after {
     animation: pulso 1500ms var(--ease-out) 1750ms 3;
+  }
+
+  /* Print ampliado: a imagem cresce de 97% para 100% enquanto aparece */
+  .zoom__corpo img {
+    transition: transform 260ms var(--ease-out);
+  }
+
+  @starting-style {
+    .zoom[open] .zoom__corpo img {
+      transform: scale(0.97);
+    }
+  }
+}
+
+/* Print ampliado: fundo e imagem aparecem e somem num fade curto.
+   "allow-discrete" deixa o <dialog> esperar o fade antes de sumir de vez. */
+.zoom,
+.zoom::backdrop {
+  opacity: 0;
+  transition:
+    opacity 200ms var(--ease-out),
+    overlay 200ms allow-discrete,
+    display 200ms allow-discrete;
+}
+
+.zoom[open],
+.zoom[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .zoom[open],
+  .zoom[open]::backdrop {
+    opacity: 0;
   }
 }
 

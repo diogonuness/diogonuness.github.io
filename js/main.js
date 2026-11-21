@@ -10,6 +10,7 @@
    6. Régua da trajetória
    7. Copiar e-mail
    8. Ano do rodapé
+   9. Print ampliado
    ========================================================================== */
 
 const raiz = document.documentElement;
@@ -123,6 +124,10 @@ const textosEn = {
   'norma.pdfTexto': 'Each answer opens IFTO’s official PDF on the page of the cited article, with the passage highlighted.',
   'img.normaResposta': 'Norma Clara answering “I missed the exam, now what?” with article 75 of the regulation and a plain-language explanation',
   'img.normaPdf': 'IFTO’s official PDF open on the page of article 75, with the passage highlighted',
+  'zoom.ver': 'View full size',
+  'zoom.verPainel': 'View full size: adherence dashboard',
+  'zoom.verPdf': 'View full size: official PDF',
+  'zoom.dica': 'Pinch with two fingers to zoom in',
 
   'data.dez25': 'Dec 2025',
   'conquistas.titulo': 'Achievements',
@@ -447,6 +452,47 @@ if (botaoCopiar && linkEmail) botaoCopiar.addEventListener('click', copiarEmail)
 document.querySelectorAll('[data-ano]').forEach((el) => {
   el.textContent = String(new Date().getFullYear());
 });
+
+
+/* 9. Print ampliado ----------------------------------------------------------
+   Os prints de detalhe (figuras com data-ampliar) abrem em tamanho real
+   num <dialog>. O botão "Ver em tamanho real" é o caminho do teclado e do
+   leitor de tela; clicar no próprio print é um atalho para mouse e toque.
+   O <dialog> nativo prende o foco aqui dentro e fecha com Esc. */
+const zoom = document.querySelector('[data-zoom]');
+
+if (zoom) {
+  const zoomImagem = zoom.querySelector('[data-zoom-img]');
+  const zoomLegenda = zoom.querySelector('[data-zoom-legenda]');
+  let botaoDeOrigem = null;
+
+  const abrirZoom = (figura) => {
+    const imagem = figura.querySelector('.moldura__tela img');
+    zoomImagem.src = imagem.currentSrc || imagem.src;
+    zoomImagem.alt = imagem.alt; // o alt já está no idioma atual
+    zoomLegenda.textContent = figura.querySelector('figcaption .rotulo').textContent;
+    botaoDeOrigem = figura.querySelector('[data-ampliar-botao]');
+    zoom.showModal();
+    // O foco fica no próprio dialog, e não no botão de fechar: assim não
+    // aparece um anel de foco depois de um toque. O Tab leva ao "Fechar".
+    zoom.focus();
+  };
+
+  document.querySelectorAll('[data-ampliar]').forEach((figura) => {
+    figura.querySelector('[data-ampliar-botao]').addEventListener('click', () => abrirZoom(figura));
+    figura.querySelector('.palco').addEventListener('click', () => abrirZoom(figura));
+  });
+
+  // Clicar em qualquer lugar fora da imagem (no fundo escuro) também fecha
+  zoom.addEventListener('click', (evento) => {
+    if (evento.target !== zoomImagem) zoom.close();
+  });
+
+  // Ao fechar, o foco volta para o botão daquele print
+  zoom.addEventListener('close', () => {
+    if (botaoDeOrigem) botaoDeOrigem.focus({ preventScroll: true });
+  });
+}
 
 
 /* Por último: aplica o idioma salvo (se a pessoa já escolheu inglês antes) */
