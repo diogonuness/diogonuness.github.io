@@ -42,7 +42,7 @@
       "address": { "@type": "PostalAddress", "addressLocality": "Araguaína", "addressRegion": "TO", "addressCountry": "BR" },
       "affiliation": { "@type": "EducationalOrganization", "name": "Instituto Federal do Tocantins (IFTO)" },
       "knowsLanguage": ["pt-BR", "en"],
-      "sameAs": ["https://github.com/diogonuness", "https://linkedin.com/in/diogoaraujonunes"]
+      "sameAs": ["https://github.com/diogonuness", "https://linkedin.com/in/diogoaraujonunes", "https://lattes.cnpq.br/1566913403093846"]
     }
   </script>
 
@@ -157,8 +157,8 @@
             <span data-i18n="hero.verProjetos">Ver projetos</span>
             <svg class="icone-baixo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v10M3.5 8.5 8 13l4.5-4.5" /></svg>
           </a>
-          <!-- TROCAR: coloque o arquivo cv.pdf na raiz do repositório (ao lado do index.html) -->
-          <a class="botao botao--secundario" href="/cv.pdf" download="curriculo-diogo-araujo-nunes.pdf">
+          <!-- Currículo em português; com o site em inglês, o JS troca para o Resume (data-i18n-attr) -->
+          <a class="botao botao--secundario" href="Curriculo_Diogo_Araujo_Nunes.pdf" download data-i18n-attr="href:cv.arquivo">
             <span data-i18n="hero.baixarCv">Baixar currículo</span>
             <svg class="icone-baixo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10" /></svg>
           </a>
@@ -220,8 +220,8 @@
 
     <!-- ==================================================================
          PROJETOS: LembreMED em destaque e Norma Clara logo abaixo.
-         Os prints ainda não chegaram: cada moldura tem uma ilustração
-         neutra (SVG) no lugar. Procure por "TROCAR" para substituir.
+         Os prints ficam em assets/img/ (WebP). Para trocar um print,
+         mude o src da <img> e os números de width e height.
          ================================================================== -->
     <section class="secao" id="projetos" aria-labelledby="projetos-titulo">
       <div class="wrap">
@@ -259,51 +259,7 @@
                 <span class="moldura__url">lembremed.labsis.dev.br</span>
               </span>
               <span class="moldura__tela">
-                <!-- TROCAR: print do LembreMED (de preferência 1600 × 1000, em .webp).
-                     Apague o <svg> abaixo e coloque no lugar:
-                     <img src="assets/img/lembremed.webp" alt="Tela do LembreMED com as doses do dia" width="1600" height="1000" loading="lazy" decoding="async"> -->
-                <svg class="ilustra" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
-                  <rect class="il-fundo" width="800" height="500" />
-                  <!-- barra do app -->
-                  <circle class="il-forte" cx="44" cy="30" r="10" />
-                  <rect class="il-medio" x="64" y="25" width="96" height="10" rx="5" />
-                  <circle class="il-fraco" cx="756" cy="30" r="12" />
-                  <!-- semana de doses: 7 dias × 3 horários -->
-                  <rect class="il-cartao" x="40" y="72" width="452" height="396" rx="16" />
-                  <rect class="il-forte" x="68" y="100" width="150" height="12" rx="6" />
-                  <rect class="il-fraco" x="68" y="124" width="232" height="8" rx="4" />
-                  <rect class="il-realce" x="294" y="160" width="52" height="208" rx="26" />
-                  <g class="il-medio">
-                    <rect x="88" y="172" width="24" height="6" rx="3" /><rect x="146" y="172" width="24" height="6" rx="3" /><rect x="204" y="172" width="24" height="6" rx="3" /><rect x="262" y="172" width="24" height="6" rx="3" /><rect x="378" y="172" width="24" height="6" rx="3" /><rect x="436" y="172" width="24" height="6" rx="3" />
-                  </g>
-                  <rect class="il-forte" x="308" y="172" width="24" height="6" rx="3" />
-                  <g class="il-forte">
-                    <circle cx="100" cy="218" r="15" /><circle cx="158" cy="218" r="15" /><circle cx="216" cy="218" r="15" /><circle cx="274" cy="218" r="15" /><circle cx="320" cy="218" r="15" />
-                    <circle cx="100" cy="270" r="15" /><circle cx="158" cy="270" r="15" /><circle cx="216" cy="270" r="15" /><circle cx="274" cy="270" r="15" />
-                    <circle cx="100" cy="322" r="15" /><circle cx="158" cy="322" r="15" /><circle cx="274" cy="322" r="15" />
-                  </g>
-                  <circle class="il-sinal" cx="320" cy="270" r="15" />
-                  <g class="il-contorno">
-                    <circle cx="216" cy="322" r="14" /><circle cx="320" cy="322" r="14" />
-                    <circle cx="390" cy="218" r="14" /><circle cx="448" cy="218" r="14" />
-                    <circle cx="390" cy="270" r="14" /><circle cx="448" cy="270" r="14" />
-                    <circle cx="390" cy="322" r="14" /><circle cx="448" cy="322" r="14" />
-                  </g>
-                  <rect class="il-fraco" x="68" y="410" width="396" height="8" rx="4" />
-                  <rect class="il-forte" x="68" y="410" width="250" height="8" rx="4" />
-                  <!-- próximas doses -->
-                  <rect class="il-cartao" x="516" y="72" width="244" height="120" rx="16" />
-                  <rect class="il-cartao" x="516" y="208" width="244" height="120" rx="16" />
-                  <rect class="il-cartao" x="516" y="344" width="244" height="124" rx="16" />
-                  <circle class="il-sinal" cx="552" cy="112" r="14" />
-                  <circle class="il-forte" cx="552" cy="248" r="14" />
-                  <circle class="il-medio" cx="552" cy="384" r="14" />
-                  <g class="il-forte"><rect x="578" y="104" width="110" height="9" rx="4.5" /><rect x="578" y="240" width="96" height="9" rx="4.5" /><rect x="578" y="376" width="104" height="9" rx="4.5" /></g>
-                  <g class="il-fraco"><rect x="578" y="122" width="70" height="7" rx="3.5" /><rect x="578" y="258" width="84" height="7" rx="3.5" /><rect x="578" y="394" width="64" height="7" rx="3.5" /></g>
-                  <rect class="il-contorno-sinal" x="540" y="152" width="96" height="24" rx="12" />
-                  <rect class="il-realce" x="540" y="288" width="96" height="24" rx="12" />
-                  <rect class="il-realce" x="540" y="424" width="96" height="24" rx="12" />
-                </svg>
+                <img src="assets/img/lembremed-inicio.webp" alt="Página inicial do LembreMED: “Nunca mais esqueça um medicamento.”" width="1600" height="784" loading="lazy" decoding="async" data-i18n-attr="alt:img.lembremedInicio">
               </span>
             </span>
           </a>
@@ -319,8 +275,7 @@
             </div>
             <div class="caso__item">
               <dt class="rotulo" data-i18n="caso.papel">Meu papel</dt>
-              <!-- REVISAR: se quiser, diga aqui o que foi seu (telas, banco de dados, permissões...) -->
-              <dd data-i18n="lembremed.papel">Desenvolvo o sistema em dupla com João Gabryel, com orientação do Prof. Iury Gomes de Oliveira (IFTO / LabSIS). Sou bolsista de Iniciação Científica Júnior do CNPq no projeto.</dd>
+              <dd data-i18n="lembremed.papel">Desenvolvo em dupla com João Gabryel, com orientação do Prof. Iury Gomes de Oliveira (IFTO / LabSIS). Trabalho nos perfis de acesso e no painel que mostra a situação de cada dose. Apresentei o pôster que ficou em 1º lugar na 17ª JICE.</dd>
             </div>
             <div class="caso__item">
               <dt class="rotulo" data-i18n="caso.resultado">Resultado</dt>
@@ -342,75 +297,85 @@
               </dd>
             </div>
           </dl>
+
+          <!-- Detalhe: o painel de adesão, parte em que o Diogo trabalha (dados fictícios, como no pôster) -->
+          <figure class="vitrine vitrine--invertida detalhe">
+            <div class="palco palco--medio">
+              <span class="moldura">
+                <span class="moldura__barra">
+                  <span class="moldura__pontos"><i></i><i></i><i></i></span>
+                  <span class="moldura__url">lembremed.labsis.dev.br</span>
+                </span>
+                <span class="moldura__tela">
+                  <img src="assets/img/lembremed-painel.webp" alt="Painel de adesão do LembreMED: contadores de doses tomadas, atrasadas, perdidas e pendentes e um gráfico dos últimos 14 dias" width="1414" height="782" loading="lazy" decoding="async" data-i18n-attr="alt:img.lembremedPainel">
+                </span>
+              </span>
+            </div>
+            <figcaption class="vitrine__texto detalhe__texto">
+              <span class="rotulo" data-i18n="lembremed.painelRotulo">Painel de adesão · dados fictícios</span>
+              <span data-i18n="lembremed.painelTexto">Mostra as doses por situação (tomada, atrasada, perdida ou pendente), a taxa de adesão e a evolução dos últimos 14 dias.</span>
+            </figcaption>
+          </figure>
         </article>
 
-        <!-- Norma Clara: projeto médio, com a moldura à esquerda e o texto à direita -->
-        <article class="cartao" id="norma-clara" aria-labelledby="norma-titulo">
-          <a class="palco palco--cartao" href="https://diogonuness.github.io/norma-clara/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-            <span class="moldura">
-              <span class="moldura__barra">
-                <span class="moldura__pontos"><i></i><i></i><i></i></span>
-                <span class="moldura__url">diogonuness.github.io/norma-clara</span>
+        <!-- Norma Clara: projeto médio. Linha 1: moldura e texto. Linha 2: o PDF oficial. -->
+        <article class="projeto-medio" id="norma-clara" aria-labelledby="norma-titulo">
+          <div class="vitrine">
+            <a class="palco palco--medio" href="https://diogonuness.github.io/norma-clara/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+              <span class="moldura">
+                <span class="moldura__barra">
+                  <span class="moldura__pontos"><i></i><i></i><i></i></span>
+                  <span class="moldura__url">diogonuness.github.io/norma-clara</span>
+                </span>
+                <span class="moldura__tela">
+                  <img src="assets/img/norma-clara-resposta.webp" alt="Norma Clara respondendo “Perdi a prova, e agora?” com o artigo 75 do regulamento e uma explicação em linguagem simples" width="930" height="785" loading="lazy" decoding="async" data-i18n-attr="alt:img.normaResposta">
+                </span>
               </span>
-              <span class="moldura__tela">
-                <!-- TROCAR: print do Norma Clara (1600 × 1000, .webp). Apague o <svg> e use:
-                     <img src="assets/img/norma-clara.webp" alt="Norma Clara respondendo uma pergunta e citando o artigo da normativa" width="1600" height="1000" loading="lazy" decoding="async"> -->
-                <svg class="ilustra" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
-                  <rect class="il-fundo" width="800" height="500" />
-                  <circle class="il-forte" cx="44" cy="30" r="10" />
-                  <rect class="il-medio" x="64" y="25" width="110" height="10" rx="5" />
-                  <!-- pergunta -->
-                  <rect class="il-realce" x="398" y="72" width="292" height="56" rx="20" />
-                  <rect class="il-forte" x="422" y="90" width="210" height="8" rx="4" />
-                  <rect class="il-medio" x="422" y="106" width="140" height="8" rx="4" />
-                  <!-- resposta com o artigo citado -->
-                  <rect class="il-cartao" x="110" y="150" width="580" height="236" rx="18" />
-                  <rect class="il-contorno-sinal" x="138" y="176" width="150" height="34" rx="17" />
-                  <path class="il-sinal" d="M156 184h12l6 6v12h-18Z" />
-                  <rect class="il-forte" x="184" y="189" width="84" height="8" rx="4" />
-                  <g class="il-medio">
-                    <rect x="138" y="236" width="512" height="9" rx="4.5" />
-                    <rect x="138" y="290" width="470" height="9" rx="4.5" />
-                    <rect x="138" y="317" width="300" height="9" rx="4.5" />
-                  </g>
-                  <rect class="il-marca" x="132" y="256" width="460" height="22" rx="6" />
-                  <rect class="il-forte" x="138" y="263" width="440" height="9" rx="4.5" />
-                  <rect class="il-contorno" x="138" y="344" width="92" height="26" rx="13" />
-                  <rect class="il-medio" x="156" y="354" width="56" height="7" rx="3.5" />
-                  <!-- campo de pergunta com microfone -->
-                  <rect class="il-cartao" x="110" y="410" width="580" height="56" rx="28" />
-                  <rect class="il-fraco" x="140" y="434" width="240" height="8" rx="4" />
-                  <circle class="il-forte" cx="660" cy="438" r="18" />
-                  <rect class="il-fundo" x="656" y="429" width="8" height="14" rx="4" />
-                </svg>
-              </span>
-            </span>
-          </a>
-          <div class="cartao__texto">
-            <p class="rotulo" data-i18n="norma.rotulo">Protótipo · demo no ar</p>
-            <h3 class="cartao__nome" id="norma-titulo">Norma Clara</h3>
-            <p data-i18n="norma.resumo">Assistente que responde perguntas sobre as normativas do IFTO, por texto ou voz, citando o artigo exato e o PDF oficial.</p>
-            <p class="cartao__detalhe" data-i18n="norma.detalhe">Hoje a busca usa palavras-chave e sinônimos; a próxima etapa é IA com RAG. Feito pela equipe Fonte Certa, com orientação do Prof. Iury.</p>
-            <p class="premio">
-              <span class="premio__topo"><span class="premio__lugar" data-i18n="premio.terceiro">3º lugar</span><time class="premio__data" datetime="2026-11" data-i18n="data.nov26">nov/2026</time></span>
-              <span class="premio__texto" data-i18n="norma.premio">V Ideathon Maker, 17ª JICE (IFTO)</span>
-            </p>
-            <ul class="tags" role="list" aria-label="Tecnologias" data-i18n-attr="aria-label:a11y.tecnologias">
-              <li>JavaScript</li>
-              <li>Web Speech API</li>
-              <li>PDF.js</li>
-            </ul>
-            <p class="cartao__links">
-              <a class="link" href="https://diogonuness.github.io/norma-clara/" target="_blank" rel="noopener">
-                <span data-i18n="norma.demo">Ver demo</span> <span class="sr-only" data-i18n="a11y.novaAba">(abre em nova aba)</span>
-                <svg class="icone-externo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
-              </a>
-              <a class="link" href="https://github.com/diogonuness/norma-clara" target="_blank" rel="noopener">
-                <span data-i18n="norma.codigo">Código no GitHub</span> <span class="sr-only" data-i18n="a11y.novaAba">(abre em nova aba)</span>
-                <svg class="icone-externo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
-              </a>
-            </p>
+            </a>
+            <div class="vitrine__texto cartao__texto">
+              <p class="rotulo" data-i18n="norma.rotulo">Protótipo · demo no ar</p>
+              <h3 class="cartao__nome" id="norma-titulo">Norma Clara</h3>
+              <p data-i18n="norma.resumo">Assistente que responde perguntas sobre as normativas do IFTO, por texto ou voz, citando o artigo exato e o PDF oficial.</p>
+              <p class="cartao__detalhe" data-i18n="norma.detalhe">Hoje a busca usa palavras-chave e sinônimos; a próxima etapa é IA com RAG. Feito pela equipe Fonte Certa, com orientação do Prof. Iury.</p>
+              <p class="premio">
+                <span class="premio__topo"><span class="premio__lugar" data-i18n="premio.terceiro">3º lugar</span><time class="premio__data" datetime="2026-11" data-i18n="data.nov26">nov/2026</time></span>
+                <span class="premio__texto" data-i18n="norma.premio">V Ideathon Maker, 17ª JICE (IFTO)</span>
+              </p>
+              <ul class="tags" role="list" aria-label="Tecnologias" data-i18n-attr="aria-label:a11y.tecnologias">
+                <li>JavaScript</li>
+                <li>Web Speech API</li>
+                <li>PDF.js</li>
+              </ul>
+              <p class="cartao__links">
+                <a class="link" href="https://diogonuness.github.io/norma-clara/" target="_blank" rel="noopener">
+                  <span data-i18n="norma.demo">Ver demo</span> <span class="sr-only" data-i18n="a11y.novaAba">(abre em nova aba)</span>
+                  <svg class="icone-externo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
+                </a>
+                <a class="link" href="https://github.com/diogonuness/norma-clara" target="_blank" rel="noopener">
+                  <span data-i18n="norma.codigo">Código no GitHub</span> <span class="sr-only" data-i18n="a11y.novaAba">(abre em nova aba)</span>
+                  <svg class="icone-externo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
+                </a>
+              </p>
+            </div>
           </div>
+
+          <figure class="vitrine vitrine--invertida detalhe">
+            <div class="palco palco--medio">
+              <span class="moldura">
+                <span class="moldura__barra">
+                  <span class="moldura__pontos"><i></i><i></i><i></i></span>
+                  <span class="moldura__url">diogonuness.github.io/norma-clara</span>
+                </span>
+                <span class="moldura__tela">
+                  <img src="assets/img/norma-clara-pdf.webp" alt="PDF oficial do IFTO aberto na página do artigo 75, com o trecho destacado" width="930" height="786" loading="lazy" decoding="async" data-i18n-attr="alt:img.normaPdf">
+                </span>
+              </span>
+            </div>
+            <figcaption class="vitrine__texto detalhe__texto">
+              <span class="rotulo" data-i18n="norma.pdfRotulo">PDF oficial · trecho destacado</span>
+              <span data-i18n="norma.pdfTexto">Cada resposta abre o PDF oficial do IFTO na página do artigo citado, com o trecho destacado.</span>
+            </figcaption>
+          </figure>
         </article>
       </div>
     </section>
@@ -434,55 +399,61 @@
           <li><strong class="numero">2</strong> <span data-i18n="numeros.sistemas">sistemas no ar</span></li>
         </ul>
 
-        <ol class="linha-tempo" role="list">
-          <li class="evento evento--primeiro">
-            <time class="evento__data" datetime="2026-11" data-i18n="data.nov26">nov/2026</time>
-            <span class="evento__ponto" aria-hidden="true"></span>
-            <p class="evento__lugar" data-i18n="premio.primeiro">1º lugar</p>
-            <div class="evento__texto">
-              <p class="evento__nome" data-i18n="conquistas.jice">Ciências da Saúde · 17ª JICE (IFTO)</p>
-            </div>
-            <a class="evento__projeto" href="#lembremed">LembreMED</a>
-          </li>
-          <li class="evento">
-            <time class="evento__data" datetime="2026-11" data-i18n="data.nov26">nov/2026</time>
-            <span class="evento__ponto" aria-hidden="true"></span>
-            <p class="evento__lugar" data-i18n="premio.terceiro">3º lugar</p>
-            <div class="evento__texto">
-              <p class="evento__nome" data-i18n="conquistas.ideathon">V Ideathon Maker · 17ª JICE (IFTO)</p>
-            </div>
-            <a class="evento__projeto" href="#norma-clara">Norma Clara</a>
-          </li>
-          <li class="evento evento--bolsa">
-            <time class="evento__data" datetime="2025-12" data-i18n="data.dez25">dez/2025</time>
-            <span class="evento__ponto" aria-hidden="true"></span>
-            <p class="evento__lugar" data-i18n="conquistas.bolsa">Bolsa CNPq</p>
-            <div class="evento__texto">
-              <p class="evento__nome" data-i18n="conquistas.bolsaNome">Iniciação Científica Júnior</p>
-              <p class="evento__nota" data-i18n="conquistas.bolsaNota">De dez/2025 a dez/2026, no projeto LembreMED.</p>
-            </div>
-            <a class="evento__projeto" href="#lembremed">LembreMED</a>
-          </li>
-          <li class="evento evento--primeiro">
-            <time class="evento__data" datetime="2025-11" data-i18n="data.nov25">nov/2025</time>
-            <span class="evento__ponto" aria-hidden="true"></span>
-            <p class="evento__lugar" data-i18n="premio.primeiro">1º lugar</p>
-            <div class="evento__texto">
-              <p class="evento__nome" data-i18n="conquistas.viva">Ciências Biológicas e da Saúde · Viva Ciência</p>
-              <p class="evento__nota" data-i18n="conquistas.vivaNota">Rendeu a bolsa do CNPq.</p>
-            </div>
-            <a class="evento__projeto" href="#lembremed">LembreMED</a>
-          </li>
-          <li class="evento">
-            <time class="evento__data" datetime="2025-11" data-i18n="data.nov25">nov/2025</time>
-            <span class="evento__ponto" aria-hidden="true"></span>
-            <p class="evento__lugar" data-i18n="premio.terceiro">3º lugar</p>
-            <div class="evento__texto">
-              <p class="evento__nome" data-i18n="conquistas.campus">Ideathon · Campus Party Goiás</p>
-            </div>
-            <a class="evento__projeto" href="#lembremed">LembreMED</a>
-          </li>
-        </ol>
+        <div class="conquistas__corpo">
+          <ol class="linha-tempo" role="list">
+            <li class="evento evento--primeiro">
+              <time class="evento__data" datetime="2026-11" data-i18n="data.nov26">nov/2026</time>
+              <span class="evento__ponto" aria-hidden="true"></span>
+              <p class="evento__lugar" data-i18n="premio.primeiro">1º lugar</p>
+              <div class="evento__texto">
+                <p class="evento__nome" data-i18n="conquistas.jice">Ciências da Saúde · 17ª JICE (IFTO)</p>
+              </div>
+              <a class="evento__projeto" href="#lembremed">LembreMED</a>
+            </li>
+            <li class="evento">
+              <time class="evento__data" datetime="2026-11" data-i18n="data.nov26">nov/2026</time>
+              <span class="evento__ponto" aria-hidden="true"></span>
+              <p class="evento__lugar" data-i18n="premio.terceiro">3º lugar</p>
+              <div class="evento__texto">
+                <p class="evento__nome" data-i18n="conquistas.ideathon">V Ideathon Maker · 17ª JICE (IFTO)</p>
+              </div>
+              <a class="evento__projeto" href="#norma-clara">Norma Clara</a>
+            </li>
+            <li class="evento evento--bolsa">
+              <time class="evento__data" datetime="2025-12" data-i18n="data.dez25">dez/2025</time>
+              <span class="evento__ponto" aria-hidden="true"></span>
+              <p class="evento__lugar" data-i18n="conquistas.bolsa">Bolsa CNPq</p>
+              <div class="evento__texto">
+                <p class="evento__nome" data-i18n="conquistas.bolsaNome">Iniciação Científica Júnior</p>
+                <p class="evento__nota" data-i18n="conquistas.bolsaNota">De dez/2025 a dez/2026, no projeto LembreMED.</p>
+              </div>
+              <a class="evento__projeto" href="#lembremed">LembreMED</a>
+            </li>
+            <li class="evento evento--primeiro">
+              <time class="evento__data" datetime="2025-11" data-i18n="data.nov25">nov/2025</time>
+              <span class="evento__ponto" aria-hidden="true"></span>
+              <p class="evento__lugar" data-i18n="premio.primeiro">1º lugar</p>
+              <div class="evento__texto">
+                <p class="evento__nome" data-i18n="conquistas.viva">Ciências Biológicas e da Saúde · Viva Ciência</p>
+                <p class="evento__nota" data-i18n="conquistas.vivaNota">Rendeu a bolsa do CNPq.</p>
+              </div>
+              <a class="evento__projeto" href="#lembremed">LembreMED</a>
+            </li>
+            <li class="evento">
+              <time class="evento__data" datetime="2025-11" data-i18n="data.nov25">nov/2025</time>
+              <span class="evento__ponto" aria-hidden="true"></span>
+              <p class="evento__lugar" data-i18n="premio.terceiro">3º lugar</p>
+              <div class="evento__texto">
+                <p class="evento__nome" data-i18n="conquistas.campus">Ideathon · Campus Party Goiás</p>
+              </div>
+              <a class="evento__projeto" href="#lembremed">LembreMED</a>
+            </li>
+          </ol>
+          <figure class="conquistas__foto">
+            <img src="assets/img/jice-2026.webp" alt="Diogo ao lado do pôster do LembreMED na 17ª JICE do IFTO" width="768" height="1024" loading="lazy" decoding="async" data-i18n-attr="alt:img.jice">
+            <figcaption class="rotulo" data-i18n="conquistas.foto">17ª JICE · Araguatins (TO) · nov/2026</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -499,17 +470,7 @@
 
         <div class="sobre">
           <figure class="sobre__foto">
-            <!-- TROCAR: sua foto (retrato 4:5, de preferência 800 × 1000, em .webp).
-                 Apague o <svg> abaixo e coloque no lugar:
-                 <img src="assets/img/diogo.webp" alt="Foto de Diogo Araujo Nunes" width="800" height="1000" loading="lazy" decoding="async"> -->
-            <svg class="ilustra" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <rect class="il-realce" width="400" height="500" />
-              <g class="il-contorno">
-                <path d="M28 52V28h24M348 28h24v24M372 448v24h-24M52 472H28v-24" />
-              </g>
-              <path class="il-medio" transform="translate(64 114) scale(4.4)" d="M9.8 42V22H16.65Q21.5 22 24.11 24.61Q26.73 27.21 26.73 32.03Q26.73 36.82 24.16 39.41Q21.59 42 16.82 42ZM13.96 38.48H16.65Q19.6 38.48 21.02 36.89Q22.44 35.29 22.44 32.01Q22.44 28.71 21.02 27.11Q19.6 25.52 16.65 25.52H13.96ZM29.32 42V22H33.95L42.04 36.04V22H46.2V42H41.49L33.47 28.42V42Z" />
-              <circle class="il-sinal" cx="289.7" cy="286" r="12.8" />
-            </svg>
+            <img src="assets/img/diogo.webp" alt="Foto de Diogo Araujo Nunes" width="768" height="1024" loading="lazy" decoding="async" data-i18n-attr="alt:img.diogo">
           </figure>
 
           <div class="sobre__texto">
@@ -530,7 +491,7 @@
               </div>
               <div class="fatos__item">
                 <dt class="rotulo" data-i18n="sobre.idiomas">Idiomas</dt>
-                <dd data-i18n="sobre.idiomasTexto">Português (nativo) · Inglês B1: Michigan English Test (nov/2025) e curso completo na Fisk (2022–2025)</dd>
+                <dd data-i18n="sobre.idiomasTexto">Português (nativo) · Inglês B1: Michigan English Test (nov/2025) e curso completo na Fisk (2022–2025), conceito final Above Expectations</dd>
               </div>
             </dl>
           </div>
@@ -584,8 +545,8 @@
         <p class="contato__sub" data-i18n="contato.sub">Disponível a partir de janeiro de 2027 para estágio, meio período ou contrato, presencial, híbrido ou remoto.</p>
 
         <div class="email">
-          <!-- TROCAR: seu e-mail, nos DOIS lugares desta linha (no href e no texto). O botão copia o texto. -->
-          <a class="email__link" href="mailto:seu-email@example.com" data-email>seu-email@example.com</a>
+          <!-- O botão "Copiar" copia o texto deste link. Para mudar o e-mail, troque no href e no texto. -->
+          <a class="email__link" href="mailto:diogonunes2711@gmail.com" data-email>diogonunes2711@gmail.com</a>
           <button class="botao botao--secundario email__copiar" type="button" aria-label="Copiar e-mail" data-copiar data-i18n-attr="aria-label:a11y.copiar">
             <span class="email__icones" aria-hidden="true">
               <svg class="icone-copiar" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="2" /><path d="M10.5 3.5v-.5a1.5 1.5 0 0 0-1.5-1.5H4A1.5 1.5 0 0 0 2.5 3v5A1.5 1.5 0 0 0 4 9.5h.5" /></svg>
@@ -611,15 +572,13 @@
             </a>
           </li>
           <li>
-            <!-- TROCAR: link do seu Currículo Lattes (ex.: http://lattes.cnpq.br/0000000000000000) -->
-            <a class="link" href="#TROCAR-link-do-lattes" target="_blank" rel="noopener">
+            <a class="link" href="https://lattes.cnpq.br/1566913403093846" target="_blank" rel="noopener">
               <span data-i18n="contato.lattes">Currículo Lattes</span> <span class="sr-only" data-i18n="a11y.novaAba">(abre em nova aba)</span>
               <svg class="icone-externo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" /></svg>
             </a>
           </li>
           <li>
-            <!-- TROCAR: coloque o arquivo cv.pdf na raiz do repositório -->
-            <a class="link" href="/cv.pdf" download="curriculo-diogo-araujo-nunes.pdf">
+            <a class="link" href="Curriculo_Diogo_Araujo_Nunes.pdf" download data-i18n-attr="href:cv.arquivo">
               <span data-i18n="contato.pdf">Currículo em PDF</span>
               <svg class="icone-baixo" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10" /></svg>
             </a>

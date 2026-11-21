@@ -72,6 +72,8 @@ const textosEn = {
   'hero.valor': 'I build web systems for real problems. LembreMED, which helps older adults remember their medication, is live and has already won three awards.',
   'hero.verProjetos': 'See projects',
   'hero.baixarCv': 'Download résumé',
+  'cv.arquivo': 'Resume_Diogo_Araujo_Nunes.pdf', // currículo em inglês
+
 
   'data.nov25': 'Nov 2025',
   'data.nov26': 'Nov 2026',
@@ -100,7 +102,11 @@ const textosEn = {
   'caso.resultado': 'Results',
   'lembremed.problema': 'People who take several medications a day need to remember every dose on time, and their caregivers need to know it was taken.',
   'lembremed.solucao': 'The caregiver registers medications and schedules and follows each dose. The older adult uses a simple, accessible screen. There are three access levels: older adult, caregiver and administrator.',
-  'lembremed.papel': 'I build the system with João Gabryel, advised by Prof. Iury Gomes de Oliveira (IFTO / LabSIS). I hold a CNPq junior research scholarship on the project.',
+  'lembremed.papel': 'I build it with João Gabryel, advised by Prof. Iury Gomes de Oliveira (IFTO / LabSIS). I work on the access roles and on the dashboard that shows the status of each dose. I presented the poster that won 1st place at the 17th JICE.',
+  'lembremed.painelRotulo': 'Adherence dashboard · sample data',
+  'lembremed.painelTexto': 'Shows doses by status (taken, late, missed or pending), the adherence rate and the trend over the last 14 days.',
+  'img.lembremedInicio': 'LembreMED home page',
+  'img.lembremedPainel': 'LembreMED adherence dashboard: counts of doses taken, late, missed and pending, and a chart of the last 14 days',
   'premio.primeiro': '1st place',
   'premio.terceiro': '3rd place',
   'lembremed.premio1': 'Health Sciences, 17th JICE (IFTO)',
@@ -113,6 +119,10 @@ const textosEn = {
   'norma.premio': 'V Ideathon Maker, 17th JICE (IFTO)',
   'norma.demo': 'Live demo',
   'norma.codigo': 'Code on GitHub',
+  'norma.pdfRotulo': 'Official PDF · highlighted passage',
+  'norma.pdfTexto': 'Each answer opens IFTO’s official PDF on the page of the cited article, with the passage highlighted.',
+  'img.normaResposta': 'Norma Clara answering “I missed the exam, now what?” with article 75 of the regulation and a plain-language explanation',
+  'img.normaPdf': 'IFTO’s official PDF open on the page of article 75, with the passage highlighted',
 
   'data.dez25': 'Dec 2025',
   'conquistas.titulo': 'Achievements',
@@ -128,6 +138,8 @@ const textosEn = {
   'conquistas.viva': 'Biological and Health Sciences · Viva Ciência',
   'conquistas.vivaNota': 'Led to the CNPq scholarship.',
   'conquistas.campus': 'Ideathon · Campus Party Goiás',
+  'conquistas.foto': '17th JICE · Araguatins, Brazil · Nov 2026',
+  'img.jice': 'Diogo next to the LembreMED poster at IFTO’s 17th JICE',
 
   'sobre.titulo': 'About',
   'sobre.nota': 'Araguaína, Tocantins, Brazil',
@@ -139,7 +151,8 @@ const textosEn = {
   'sobre.pesquisa': 'Research',
   'sobre.pesquisaTexto': 'Junior research scholarship (CNPq) at LabSIS · LembreMED · Dec 2025–Dec 2026',
   'sobre.idiomas': 'Languages',
-  'sobre.idiomasTexto': 'Portuguese (native) · English B1: Michigan English Test (Nov 2025) and the full Fisk course (2022–2025)',
+  'sobre.idiomasTexto': 'Portuguese (native) · English B1: Michigan English Test (Nov 2025) and the full Fisk course (2022–2025), final grade Above Expectations',
+  'img.diogo': 'Photo of Diogo Araujo Nunes',
 
   'stack.nota': 'Languages, frameworks and tools',
 

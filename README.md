@@ -40,7 +40,9 @@ css/style.css       todos os estilos, em blocos numerados (01. Fontes, 02. Token
 js/main.js          idioma, tema, menu do celular, régua e botão de copiar
 assets/fonts/       Geist e Geist Mono (.woff2) + licença OFL
 assets/icons/       logotipos oficiais da stack (.svg)
-assets/img/         imagens do site
+assets/img/         fotos e prints do site (.webp)
+Curriculo_...pdf    currículo em português (o botão do site usa este em PT)
+Resume_...pdf       currículo em inglês (o botão troca para este em EN)
 og.png              imagem que aparece ao compartilhar o link (1200 × 630)
 favicon.svg/.ico    monograma "DN"
 sitemap.xml         robots.txt
@@ -52,7 +54,8 @@ sitemap.xml         robots.txt
 - **Textos em inglês:** no objeto `textosEn`, no começo do `js/main.js`. Cada texto tem uma chave igual ao atributo `data-i18n` do HTML.
 - **Cores, fontes e espaçamentos:** no bloco `02. Tokens` do `css/style.css`. Mudou lá, muda no site todo, nos dois temas.
 - **Régua da trajetória (hero):** cada marco tem `--m`, o número do mês contado a partir de jan/2024 (jan/2024 = 0, jan/2027 = 36).
-- **O que falta preencher:** procure por `TROCAR` no `index.html`. Cada comentário diz o que colocar e já traz o `<img>` pronto para colar.
+- **Imagens:** ficam em `assets/img/` em WebP. Para trocar um print, salve o novo arquivo lá e mude o `src`, o `width` e o `height` da `<img>` (a proporção vem desses dois números).
+- **Currículos:** basta substituir os PDFs da raiz mantendo os mesmos nomes.
 
 ## Créditos
 

@@ -1147,15 +1147,12 @@ a {
 
 .palco > .moldura {
   flex: 1;
-  margin-bottom: -9%;
+  margin-bottom: -6%;
 }
 
-/* No cartão do Norma Clara, o palco tem proporção fixa: o que passar
-   da borda de baixo é cortado (overflow: hidden), como no LembreMED */
-.palco--cartao {
-  align-items: flex-start;
-  aspect-ratio: 16 / 9.5;
-  padding: clamp(20px, 4vw, 44px) clamp(20px, 4vw, 48px) 0;
+/* Palco médio (Norma Clara e os detalhes): menos respiro em volta da moldura */
+.palco--medio {
+  padding: clamp(20px, 4vw, 40px) clamp(20px, 4vw, 44px) 0;
 }
 
 /* Moldura de navegador */
@@ -1205,43 +1202,28 @@ a {
   transform: translateX(-21px);
 }
 
+/* A tela tem a proporção do próprio print (width e height da <img>) */
 .moldura__tela {
   display: block;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
   background: var(--superficie);
 }
 
-/* Print (img) ou ilustração (svg) dentro da moldura: preenche e dá zoom no hover */
-.moldura__tela > img,
-.moldura__tela > svg {
+.moldura__tela > img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
+  height: auto;
   transition: transform 700ms var(--ease-out);
 }
 
-/* Cores das ilustrações provisórias: seguem o tema (claro ou escuro) */
-.il-fundo { fill: var(--superficie); }
-.il-cartao { fill: var(--fundo); stroke: var(--fio); stroke-width: 1.5; }
-.il-forte { fill: var(--tinta-2); }
-.il-medio { fill: var(--fio-forte); }
-.il-fraco { fill: var(--fio); }
-.il-realce { fill: var(--superficie-2); }
-.il-sinal { fill: var(--sinal); }
-.il-marca { fill: color-mix(in srgb, var(--sinal) 16%, transparent); }
-.il-contorno { fill: none; stroke: var(--fio-forte); stroke-width: 2; }
-.il-contorno-sinal { fill: none; stroke: var(--sinal); stroke-width: 2; }
-
-/* Hover: o palco sobe 2px e a imagem dá um zoom leve dentro da moldura */
+/* Hover (só nos palcos que são links): sobe 2px e o print dá um zoom leve */
 @media (hover: hover) and (pointer: fine) {
-  .palco:hover {
+  a.palco:hover {
     box-shadow: var(--sombra);
     transform: translateY(-2px);
   }
 
-  .palco:hover .moldura__tela > * {
+  a.palco:hover .moldura__tela > img {
     transform: scale(1.025);
   }
 }
@@ -1307,22 +1289,57 @@ a {
   line-height: 1.5;
 }
 
-/* Norma Clara: projeto médio. No desktop, a moldura ocupa 7 colunas e o texto 4,
-   com uma coluna de respiro entre os dois. Em telas menores, um embaixo do outro. */
-.cartao {
+/* Vitrine: uma moldura (7 colunas) e um texto (4 colunas), com uma coluna de
+   respiro entre os dois. A versão "invertida" põe o texto à esquerda.
+   Em telas menores, a moldura vem primeiro e o texto embaixo. */
+.vitrine {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: center;
   gap: 28px var(--gap);
-  margin-top: clamp(72px, 9vw, 128px);
 }
 
-.cartao > .palco {
+.vitrine > .palco {
+  grid-row: 1;
   grid-column: 1 / span 7;
 }
 
-.cartao__texto {
+.vitrine > .vitrine__texto {
+  grid-row: 1;
   grid-column: 9 / span 4;
+}
+
+.vitrine--invertida > .palco {
+  grid-column: 6 / -1;
+}
+
+.vitrine--invertida > .vitrine__texto {
+  grid-column: 1 / span 4;
+}
+
+/* Norma Clara: começa com bastante respiro depois do LembreMED */
+.projeto-medio {
+  display: grid;
+  gap: clamp(40px, 6vw, 80px);
+  margin-top: clamp(72px, 9vw, 128px);
+}
+
+/* Detalhe: a segunda tela de um projeto, com uma legenda curta */
+.destaque > .detalhe {
+  margin-top: clamp(12px, 3vw, 32px);
+}
+
+.detalhe__texto {
+  display: grid;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--fio);
+  color: var(--tinta-2);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.cartao__texto {
   display: grid;
   gap: 12px;
   color: var(--tinta-2);
@@ -1382,12 +1399,20 @@ a {
 }
 
 @media (max-width: 1199px) {
-  .cartao > .palco {
+  .vitrine > .palco {
     grid-column: 1 / span 6;
   }
 
-  .cartao__texto {
+  .vitrine > .vitrine__texto {
     grid-column: 7 / -1;
+  }
+
+  .vitrine--invertida > .palco {
+    grid-column: 7 / -1;
+  }
+
+  .vitrine--invertida > .vitrine__texto {
+    grid-column: 1 / span 6;
   }
 }
 
@@ -1398,12 +1423,13 @@ a {
 }
 
 @media (max-width: 899px) {
-  .cartao > .palco,
-  .cartao__texto {
+  .vitrine > .palco,
+  .vitrine > .vitrine__texto {
+    grid-row: auto;
     grid-column: 1 / -1;
   }
 
-  .cartao__texto {
+  .vitrine__texto {
     max-width: 40rem;
   }
 }
@@ -1450,6 +1476,44 @@ a {
   font-variant-numeric: tabular-nums;
 }
 
+/* Linha do tempo (8 colunas) ao lado da foto da JICE (4 colunas) */
+.conquistas__corpo {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  gap: 40px var(--gap);
+}
+
+.conquistas__corpo > .linha-tempo {
+  grid-column: 1 / span 8;
+}
+
+.conquistas__foto {
+  grid-column: 9 / -1;
+  display: grid;
+  gap: 12px;
+}
+
+.conquistas__foto img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--raio);
+  background: var(--superficie-2);
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+@media (max-width: 1199px) {
+  .conquistas__corpo > .linha-tempo,
+  .conquistas__foto {
+    grid-column: 1 / -1;
+  }
+
+  .conquistas__foto {
+    max-width: 420px;
+  }
+}
+
 /* Linha do tempo: data | ponto | colocação | evento | projeto */
 .linha-tempo {
   --col-data: 104px;
@@ -1473,7 +1537,7 @@ a {
 
 .evento {
   display: grid;
-  grid-template-columns: var(--col-data) 33px minmax(0, 11rem) minmax(0, 1fr) auto;
+  grid-template-columns: var(--col-data) 33px minmax(0, 8.5rem) minmax(0, 1fr) auto;
   align-items: start;
   column-gap: 16px;
   padding-block: 20px;
@@ -1652,13 +1716,12 @@ a {
 .sobre__foto {
   grid-column: 1 / span 4;
   overflow: hidden;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4; /* a mesma proporção da foto: nada é cortado */
   border-radius: var(--raio);
   background: var(--superficie-2);
 }
 
-.sobre__foto > img,
-.sobre__foto > svg {
+.sobre__foto > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
