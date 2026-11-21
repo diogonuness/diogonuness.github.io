@@ -71,14 +71,17 @@
   <a class="pular" href="#conteudo" data-i18n="a11y.pular">Pular para o conteúdo</a>
 
   <!-- ====================================================================
-       TOPO: foto e nome, links, idioma e tema. Fica fixo ao rolar.
+       TOPO: monograma, links, idioma e tema. Fica fixo ao rolar.
        ==================================================================== -->
   <header class="topo" data-topo>
     <div class="wrap topo__barra">
       <a class="marca" href="#inicio" aria-label="Diogo Nunes, voltar ao início" data-i18n-attr="aria-label:a11y.marca">
-        <!-- Foto: recorte quadrado do rosto, salvo com 108 px (3x os 36 px da tela) para ficar nítido no celular.
-             O alt fica vazio porque o nome já está no link. -->
-        <img class="marca__foto" src="assets/img/avatar.webp" alt="" width="36" height="36" decoding="async">
+        <!-- Monograma "DN": letras da própria Geist convertidas em desenho, mais o ponto laranja -->
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect class="marca__fundo" width="64" height="64" rx="15" />
+          <path class="marca__letras" d="M9.8 42V22H16.65Q21.5 22 24.11 24.61Q26.73 27.21 26.73 32.03Q26.73 36.82 24.16 39.41Q21.59 42 16.82 42ZM13.96 38.48H16.65Q19.6 38.48 21.02 36.89Q22.44 35.29 22.44 32.01Q22.44 28.71 21.02 27.11Q19.6 25.52 16.65 25.52H13.96ZM29.32 42V22H33.95L42.04 36.04V22H46.2V42H41.49L33.47 28.42V42Z" />
+          <circle class="marca__ponto" cx="51.3" cy="39.1" r="2.9" />
+        </svg>
         <span class="marca__nome">Diogo Nunes</span>
       </a>
 

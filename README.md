@@ -55,7 +55,6 @@ sitemap.xml         robots.txt
 - **Cores, fontes e espaçamentos:** no bloco `02. Tokens` do `css/style.css`. Mudou lá, muda no site todo, nos dois temas.
 - **Régua da trajetória (hero):** cada marco tem `--m`, o número do mês contado a partir de jan/2024 (jan/2024 = 0, jan/2027 = 36).
 - **Imagens:** ficam em `assets/img/` em WebP. Para trocar um print, salve o novo arquivo lá e mude o `src`, o `width` e o `height` da `<img>` (a proporção vem desses dois números).
-- **Foto do topo:** é o `assets/img/avatar.webp`, um recorte quadrado do rosto com 108 × 108 px (aparece com 36 px). Para trocar, salve outro recorte quadrado com o mesmo nome.
 - **Currículos:** basta substituir os PDFs da raiz mantendo os mesmos nomes.
 
 ## Créditos

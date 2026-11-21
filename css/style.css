@@ -439,7 +439,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  min-width: 44px; /* no celular o nome some e sobra só a foto: o toque continua com 44px */
+  min-width: 44px; /* no celular o nome some e sobra só o monograma: o toque continua com 44px */
   min-height: 44px;
   color: var(--tinta);
   font-size: 0.9375rem;
@@ -448,18 +448,15 @@ a {
   text-decoration: none;
 }
 
-/* Foto redonda no lugar do monograma. O fio interno (outline para dentro)
-   separa a foto do fundo nos dois temas, sem virar moldura. */
-.marca__foto {
-  width: 36px;
-  height: 36px;
+.marca svg {
+  width: 30px;
+  height: 30px;
   flex: none;
-  border-radius: 50%;
-  background: var(--superficie-2);
-  object-fit: cover;
-  outline: 1px solid color-mix(in srgb, var(--tinta) 12%, transparent);
-  outline-offset: -1px;
 }
+
+.marca__fundo { fill: var(--tinta); }
+.marca__letras { fill: var(--fundo); }
+.marca__ponto { fill: var(--sinal); }
 
 .menu ul {
   display: flex;
