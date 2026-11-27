@@ -256,7 +256,7 @@ PT = {
          'um pitch para empresários e investidores&nbsp; ·&nbsp; Prêmio UNITPAC Afya'),
         ('<b>1º lugar</b> em Ciências da Saúde – 17ª JICE do IFTO (LembreMED)', 'nov/2026', None),
         ('<b>3º lugar</b> – V Ideathon Maker da 17ª JICE do IFTO (Norma Clara)', 'nov/2026', None),
-        ('<b>1º lugar</b> em Ciências Biológicas e da Saúde – Viva Ciência 2025, IFTO (LembreMED)', 'nov/2025', None),
+        ('<b>1º lugar</b> em Ciências Biomédicas e da Saúde – Viva Ciência 2025, IFTO (LembreMED)', 'nov/2025', None),
         ('<b>3º lugar</b> – Ideathon da Campus Party Goiás (LembreMED, em equipe)', 'nov/2025', None),
     ],
     'formacao': [{
@@ -332,7 +332,7 @@ EN = {
          'investors&nbsp; ·&nbsp; UNITPAC Afya Award'),
         ('<b>1st place</b>, Health Sciences – IFTO 17th JICE research conference (LembreMED)', 'Nov 2026', None),
         ('<b>3rd place</b> – 5th Ideathon Maker, IFTO 17th JICE (Norma Clara)', 'Nov 2026', None),
-        ('<b>1st place</b>, Biological and Health Sciences – Viva Ciência 2025 science fair, IFTO (LembreMED)',
+        ('<b>1st place</b>, Biomedical and Health Sciences – Viva Ciência 2025 science fair, IFTO (LembreMED)',
          'Nov 2025', None),
         ('<b>3rd place</b> – Campus Party Goiás Ideathon (LembreMED, team)', 'Nov 2025', None),
     ],
