@@ -249,7 +249,7 @@ PT = {
     }],
     # (texto, data, detalhe em cinza ou None). Mais recente primeiro.
     'premios': [
-        ('<b>4 prêmios</b> no Viva Ciência 2026, IFTO (LembreMED)', 'nov/2026',
+        ('<b>4 prêmios</b> no Viva Ciência 2026, IFTO (LembreMED, em dupla com João Gabryel)', 'nov/2026',
          '<b>1º lugar</b> em Ciências Biomédicas e da Saúde&nbsp; ·&nbsp; <b>1º lugar</b> no Prêmio Ciência que '
          'Transforma, do Rotary Club de Araguaína (Prevenção e Tratamento de Doenças)&nbsp; ·&nbsp; '
          'Prêmio Ciência Empreendedora, do Sebrae, com capacitação em empreendedorismo e direito a apresentar '
@@ -325,7 +325,7 @@ EN = {
         ],
     }],
     'premios': [
-        ('<b>4 awards</b> at Viva Ciência 2026, IFTO (LembreMED)', 'Nov 2026',
+        ('<b>4 awards</b> at Viva Ciência 2026, IFTO (LembreMED, with João Gabryel)', 'Nov 2026',
          '<b>1st place</b>, Biomedical and Health Sciences&nbsp; ·&nbsp; <b>1st place</b>, Rotary Club of '
          'Araguaína “Ciência que Transforma” Award, Disease Prevention and Treatment category&nbsp; ·&nbsp; '
          'Sebrae “Ciência Empreendedora” Award: entrepreneurship training and a pitch to business leaders and '

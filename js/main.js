@@ -143,6 +143,7 @@ const textosEn = {
   'numeros.sistemas': 'live systems',
   'conquistas.viva26Lugar': '4 awards',
   'conquistas.viva26': 'Viva Ciência 2026 (IFTO)',
+  'conquistas.viva26Nota': 'Team of two, with João Gabryel.',
   'conquistas.viva26a': '<b>1st place</b>, Biomedical and Health Sciences',
   'conquistas.viva26b': '<b>1st place</b>, Rotary Club of Araguaína “Ciência que Transforma” Award, Disease Prevention and Treatment category',
   'conquistas.viva26c': 'Sebrae “Ciência Empreendedora” Award: entrepreneurship training and a pitch to business leaders and investors',
