@@ -854,7 +854,7 @@ a {
    --hoje é o mês atual (o JS calcula): até ali a linha é sólida;
    depois, tracejada em laranja até o ponto final "disponível". */
 .regua {
-  --rotulos: 84px;   /* altura da área dos rótulos acima da linha */
+  --rotulos: 94px;   /* altura da área dos rótulos acima da linha (cabe a data + 3 linhas) */
   --escala: 14px;    /* altura dos tracinhos dos meses */
   padding-top: clamp(32px, 6vh, 72px);
 }

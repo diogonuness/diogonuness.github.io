@@ -84,6 +84,7 @@ const textosEn = {
   'regua.inicio': 'Started the IT program at IFTO',
   'regua.viva': '<b>1st</b> Viva Ciência',
   'regua.campus': '<b>3rd</b> Campus Party Goiás',
+  'regua.viva26': '<b>4 awards</b> · Viva Ciência 2026',
   'regua.jice': '<b>1st</b> JICE · Health Sciences',
   'regua.ideathon': '<b>3rd</b> V Ideathon Maker',
   'regua.fim': 'Available for internships',
