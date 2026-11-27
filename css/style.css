@@ -1299,6 +1299,44 @@ a {
   line-height: 1.5;
 }
 
+/* Resultado do LembreMED: resumo em cima, os 1º lugares e, por último,
+   os outros prêmios numa lista compacta (texto menor, data à direita) */
+.caso__resultado {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+}
+
+.premios__resumo strong {
+  color: var(--tinta);
+  font-weight: 600;
+}
+
+.premios-mais {
+  display: grid;
+  gap: 8px;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--fio);
+  list-style: none;
+  font-size: var(--fs-pequeno);
+  line-height: 1.45;
+}
+
+.premios-mais li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.premios-mais time {
+  flex: none;
+  color: var(--tinta-3);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
 /* Vitrine: uma moldura (8 colunas) e um texto (4 colunas). O padding do texto
    dá o respiro entre os dois sem sair do grid. A versão "invertida" põe o texto
    à esquerda. Abaixo de 1200px a moldura ocupa a largura toda e o texto vem
