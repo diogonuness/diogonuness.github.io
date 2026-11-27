@@ -1773,11 +1773,43 @@ html:has(.zoom[open]) body {
 .evento__nome {
   font-size: 1.0625rem;
   line-height: 1.5;
+  text-wrap: balance; /* nome em duas linhas fica com as linhas parecidas, sem palavra sobrando */
 }
 
 .evento__nota {
   color: var(--tinta-3);
   font-size: var(--fs-pequeno);
+}
+
+/* Sub-itens de um evento com vários prêmios (Viva Ciência 2026):
+   cada prêmio numa linha, com um traço curto no lugar do marcador */
+.evento__lista {
+  display: grid;
+  gap: 6px;
+  margin-top: 6px;
+  color: var(--tinta-2);
+  font-size: var(--fs-pequeno);
+  line-height: 1.5;
+}
+
+.evento__lista li {
+  position: relative;
+  padding-left: 16px;
+}
+
+.evento__lista li::before {
+  content: "";
+  position: absolute;
+  top: 0.75em;
+  left: 0;
+  width: 7px;
+  height: 1px;
+  background: var(--tinta-3);
+}
+
+.evento__lista b {
+  color: var(--tinta);
+  font-weight: 600;
 }
 
 /* O projeto vira um link para o cartão dele, mais acima.
