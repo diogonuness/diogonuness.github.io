@@ -50,7 +50,7 @@ function salvarPreferencia(chave, valor) {
    Para corrigir um texto em português, edite o HTML; em inglês, edite aqui. */
 const textosEn = {
   'meta.titulo': 'Diogo Araujo Nunes · Web developer',
-  'meta.descricao': 'Web developer and IT student at IFTO, Brazil. LembreMED, a system I helped build, is live and has won three awards. Available for internships from January 2027.',
+  'meta.descricao': 'Web developer and IT student at IFTO, Brazil. LembreMED, a system I helped build, is live and has won seven awards. Available for internships from January 2027.',
 
   'a11y.pular': 'Skip to content',
   'a11y.marca': 'Diogo Nunes, back to top',
@@ -70,7 +70,7 @@ const textosEn = {
   'hero.status': 'Available for internships · Jan 2027',
   'hero.local': 'Araguaína, Brazil · Remote',
   'hero.cargo': 'Web developer · IT student at IFTO',
-  'hero.valor': 'I build web systems for real problems. LembreMED, which helps older adults remember their medication, is live and has already won three awards.',
+  'hero.valor': 'I build web systems for real problems. LembreMED, which helps older adults remember their medication, is live and has already won seven awards.',
   'hero.verProjetos': 'See projects',
   'hero.baixarCv': 'Download résumé',
   'cv.arquivo': 'Resume_Diogo_Araujo_Nunes.pdf', // currículo em inglês
