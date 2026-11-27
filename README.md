@@ -14,7 +14,7 @@ Reúne os projetos (LembreMED e Norma Clara), os prêmios e o contato, em portug
 - **Ícones:** logotipos oficiais do [Devicon](https://devicon.dev) e do [Simple Icons](https://simpleicons.org), em SVG local.
 - **Hospedagem:** GitHub Pages, publicando a branch `main` a partir da raiz.
 
-Lighthouse (20/11/2026, servidor local): **celular 99 · 100 · 100 · 100** e **desktop 100 · 100 · 100 · 100**
+Lighthouse (26/11/2026, servidor local com compressão, como o GitHub Pages): **celular 100 · 100 · 100 · 100** e **desktop 100 · 100 · 100 · 100**
 (desempenho, acessibilidade, boas práticas e SEO).
 
 ## Como rodar localmente
@@ -43,6 +43,7 @@ assets/icons/       logotipos oficiais da stack (.svg)
 assets/img/         fotos e prints do site (.webp)
 Curriculo_...pdf    currículo em português (o botão do site usa este em PT)
 Resume_...pdf       currículo em inglês (o botão troca para este em EN)
+cv/                 script que gera os dois currículos + fonte Inter (OFL)
 og.png              imagem que aparece ao compartilhar o link (1200 × 630)
 favicon.svg/.ico    monograma "DN"
 sitemap.xml         robots.txt
@@ -55,9 +56,9 @@ sitemap.xml         robots.txt
 - **Cores, fontes e espaçamentos:** no bloco `02. Tokens` do `css/style.css`. Mudou lá, muda no site todo, nos dois temas.
 - **Régua da trajetória (hero):** cada marco tem `--m`, o número do mês contado a partir de jan/2024 (jan/2024 = 0, jan/2027 = 36).
 - **Imagens:** ficam em `assets/img/` em WebP. Para trocar um print, salve o novo arquivo lá e mude o `src`, o `width` e o `height` da `<img>` (a proporção vem desses dois números).
-- **Currículos:** basta substituir os PDFs da raiz mantendo os mesmos nomes.
+- **Currículos:** os textos ficam nos dicionários `PT` e `EN`, no fim de `cv/gerar_curriculos.py`. Depois de editar, rode `python cv/gerar_curriculos.py` (precisa do ReportLab: `python -m pip install reportlab`); ele regrava os dois PDFs da raiz e avisa se algum passar de uma página.
 
 ## Créditos
 
-Geist © The Geist Project Authors (SIL Open Font License 1.1). Ícones do Devicon (MIT) e do Simple Icons (CC0).
+Geist © The Geist Project Authors e Inter © The Inter Project Authors (SIL Open Font License 1.1). Ícones do Devicon (MIT) e do Simple Icons (CC0).
 Os logotipos são marcas dos respectivos donos.
